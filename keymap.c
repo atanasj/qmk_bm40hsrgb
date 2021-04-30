@@ -22,6 +22,8 @@ enum layers {
   _ADJUST
 };
 
+#include "keymap_combo.h"
+
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 
