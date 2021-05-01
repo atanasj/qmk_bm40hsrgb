@@ -37,6 +37,6 @@ COMB(flF6,       KC_F6,           KC_F, KC_L)
 /* SUBS(helloWorld, "QMK is pretty rad eh?", KC_H, KC_J) */
 
 // layer toggle
-TOGG(viTogg,      _VI,            KC_V, KC_L)
-TOGG(nlTogg,      _NL,            KC_N, KC_L)
-TOGG(mlTogg,      _MS,            KC_M, KC_L)
+/* TOGG(viTogg,      _VI,            KC_V, KC_L) */
+/* TOGG(nlTogg,      _NL,            KC_N, KC_L) */
+/* TOGG(mlTogg,      _MS,            KC_M, KC_L) */
