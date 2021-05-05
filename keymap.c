@@ -22,14 +22,182 @@ enum layers {
   _MS,
   _FN,
   _LOWER,
-  _RAISE,
-  _ADJUST
+  /* _RAISE, */
+  /* _ADJUST */
 };
 
 #include "keymap_combo.h"
 
-#define LOWER MO(_LOWER)
-#define RAISE MO(_RAISE)
+// =============================================================================
+// KEY DEF SECTION
+// =============================================================================
+
+#define LOWER  LT(_LOWER, KC_SPC)
+/* #define RAISE  MO(_RAISE) */
+#define NUMPAD LT(_NL, KC_SPC)
+#define L_VI_D LT(_VI, KC_D)
+#define L_MS_E LT(_MS, KC_E)
+
+#define OS_LCAG OSM(MOD_BIT(KC_LCTL) | MOD_BIT(KC_LGUI) | MOD_BIT(KC_LALT))
+#define OS_HYPR OSM(MOD_BIT(KC_LCTL) | MOD_BIT(KC_LGUI) | MOD_BIT(KC_LALT) | MOD_BIT(KC_LSFT))
+
+#define M_GC_ESC MT(MOD_LGUI|MOD_LCTL,KC_ESC)
+#define M_GA_SPC MT(MOD_LGUI|MOD_LALT,KC_SPC)
+#define T_G_TAB LCMD_T(KC_TAB)
+#define T_C_ESC LCTL_T(KC_ESC)
+#define T_A_SPC ALT_T(KC_SPC)
+#define TD_SEMI TD(SEMI_)
+#define TD_HELP TD(SL_HLP)
+
+// =============================================================================
+// LED SECTION
+// =============================================================================
+
+
+/* void rgb_matrix_indicators_user(void) { */
+
+/*   for (uint8_t i = 0; i < DRIVER_LED_TOTAL; ++i) { */
+/*     if (HAS_ANY_FLAGS(g_led_config.flags[i], LED_FLAG_MODIFIER)) { */
+/*         rgb_matrix_set_color(i, 0, 0, 0); */
+/*     } */
+/*     if (HAS_ANY_FLAGS(g_led_config.flags[i], LED_FLAG_KEYLIGHT)) { */
+/*         rgb_matrix_set_color(i, 0, 0, 0); */
+/*     } */
+/*   } */
+
+/*   //capslock */
+/*   if (host_keyboard_led_state().caps_lock) { */
+/*     for (uint8_t i = 0; i < DRIVER_LED_TOTAL; ++i) { */
+/*       if (HAS_ANY_FLAGS(g_led_config.flags[i], LED_FLAG_UNDERGLOW)) { */
+/*             rgb_matrix_set_color(i, 255, 255, 255); */
+/*       } */
+/*     } */
+/*   } */
+
+/*   //game layer */
+/*   if (IS_LAYER_ON(_VI)) { */
+/*     for (uint8_t i = 0; i < DRIVER_LED_TOTAL; ++i) { */
+/*       if (HAS_ANY_FLAGS(g_led_config.flags[i], LED_FLAG_UNDERGLOW)) { */
+/*             rgb_matrix_set_color(i, 0, 204, 255); */
+/*       } */
+/*     } */
+/*   } */
+
+/*   //secgame layer */
+/*   if (IS_LAYER_ON(_NL)) { */
+/*     for (uint8_t i = 0; i < DRIVER_LED_TOTAL; ++i) { */
+/*       if (HAS_ANY_FLAGS(g_led_config.flags[i], LED_FLAG_UNDERGLOW)) { */
+/*             rgb_matrix_set_color(i, 255, 0, 0); */
+/*       } */
+/*     } */
+/*   } */
+
+/* } */
+
+//layer led colors
+
+void rgb_matrix_indicators_user(void) {
+
+//game indicators
+
+/* if(IS_LAYER_ON(_BL)) { */
+/*   rgb_matrix_set_color(11, 0, 40, 50); */
+/* } */
+
+if(IS_LAYER_ON(_LOWER)) {
+  rgb_matrix_set_color(11, 50, 0, 0);
+}
+
+//layer indicators
+
+if(IS_LAYER_ON(_BL)) {
+  rgb_matrix_set_color(40, 0, 40, 50);
+
+  rgb_matrix_set_color(19, 0, 40, 50);
+  rgb_matrix_set_color(20, 0, 40, 50);
+  rgb_matrix_set_color(21, 0, 40, 50);
+  rgb_matrix_set_color(22, 0, 40, 50);
+}
+
+if(IS_LAYER_ON(_VI)) {
+  rgb_matrix_set_color(39, 50, 10, 20);
+
+  rgb_matrix_set_color(19, 50, 10, 20);
+
+  rgb_matrix_set_color(22, 50, 10, 20);
+
+  rgb_matrix_set_color(42, 50, 10, 20);
+}
+
+if(IS_LAYER_ON(_NL)) {
+  rgb_matrix_set_color(43, 50, 0, 0);
+
+  rgb_matrix_set_color(1, 50, 0, 0);
+  rgb_matrix_set_color(2, 50, 0, 0);
+  rgb_matrix_set_color(3, 50, 0, 0);
+  rgb_matrix_set_color(4, 50, 0, 0);
+
+  rgb_matrix_set_color(13, 50, 0, 0);
+  rgb_matrix_set_color(14, 50, 0, 0);
+  rgb_matrix_set_color(15, 50, 0, 0);
+  rgb_matrix_set_color(16, 50, 0, 0);
+
+  rgb_matrix_set_color(25, 50, 0, 0);
+  rgb_matrix_set_color(26, 50, 0, 0);
+  rgb_matrix_set_color(27, 50, 0, 0);
+  rgb_matrix_set_color(28, 50, 0, 0);
+}
+
+if(IS_LAYER_ON(_MS)) {
+  rgb_matrix_set_color(42, 10, 0, 50);
+
+  rgb_matrix_set_color(2, 10, 0, 50);
+  rgb_matrix_set_color(3, 10, 0, 50);
+  rgb_matrix_set_color(4, 10, 0, 50);
+
+  rgb_matrix_set_color(14, 10, 0, 50);
+  rgb_matrix_set_color(15, 10, 0, 50);
+  rgb_matrix_set_color(16, 10, 0, 50);
+
+  rgb_matrix_set_color(26, 10, 0, 50);
+  rgb_matrix_set_color(27, 10, 0, 50);
+  rgb_matrix_set_color(28, 10, 0, 50);
+
+  rgb_matrix_set_color(38, 10, 0, 50);
+  rgb_matrix_set_color(39, 10, 0, 50);
+  rgb_matrix_set_color(40, 10, 0, 50);
+}
+
+if(IS_LAYER_ON(_FN)) {
+  rgb_matrix_set_color(41, 0, 50, 1.9);
+
+  rgb_matrix_set_color(1, 0, 50, 1.9);
+  rgb_matrix_set_color(2, 0, 50, 1.9);
+  rgb_matrix_set_color(3, 0, 50, 1.9);
+  rgb_matrix_set_color(4, 0, 50, 1.9);
+  rgb_matrix_set_color(5, 0, 50, 1.9);
+
+  rgb_matrix_set_color(13, 0, 50, 1.9);
+  rgb_matrix_set_color(14, 0, 50, 1.9);
+  rgb_matrix_set_color(15, 0, 50, 1.9);
+  rgb_matrix_set_color(16, 0, 50, 1.9);
+  rgb_matrix_set_color(17, 0, 50, 1.9);
+
+  rgb_matrix_set_color(25, 0, 50, 1.9);
+  rgb_matrix_set_color(26, 0, 50, 1.9);
+  rgb_matrix_set_color(27, 0, 50, 1.9);
+  rgb_matrix_set_color(28, 0, 50, 1.9);
+  rgb_matrix_set_color(29, 0, 50, 1.9);
+
+}
+
+//capslock leds
+
+if (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) {
+    rgb_matrix_set_color_all(50, 15.6, 0);
+  }
+
+}
 
 // =============================================================================
 // MACRO SECTION
@@ -117,87 +285,6 @@ bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
-#define OS_LCAG OSM(MOD_BIT(KC_LCTL) | MOD_BIT(KC_LGUI) | MOD_BIT(KC_LALT))
-#define OS_HYPR OSM(MOD_BIT(KC_LCTL) | MOD_BIT(KC_LGUI) | MOD_BIT(KC_LALT) | MOD_BIT(KC_LSFT))
-
-//layer led colors
-
-/* void rgb_matrix_indicators_user(void) { */
-
-/*   for (uint8_t i = 0; i < DRIVER_LED_TOTAL; ++i) { */
-/*     if (HAS_ANY_FLAGS(g_led_config.flags[i], LED_FLAG_MODIFIER)) { */
-/*         rgb_matrix_set_color(i, 0, 0, 0); */
-/*     } */
-/*     if (HAS_ANY_FLAGS(g_led_config.flags[i], LED_FLAG_KEYLIGHT)) { */
-/*         rgb_matrix_set_color(i, 0, 0, 0); */
-/*     } */
-/*   } */
-
-/*   //capslock */
-/*   if (host_keyboard_led_state().caps_lock) { */
-/*     for (uint8_t i = 0; i < DRIVER_LED_TOTAL; ++i) { */
-/*       if (HAS_ANY_FLAGS(g_led_config.flags[i], LED_FLAG_UNDERGLOW)) { */
-/*             rgb_matrix_set_color(i, 255, 255, 255); */
-/*       } */
-/*     } */
-/*   } */
-
-/*   //nav layer */
-/*   if (IS_LAYER_ON(_VI)) { */
-/*     for (uint8_t i = 0; i < DRIVER_LED_TOTAL; ++i) { */
-/*       if (HAS_ANY_FLAGS(g_led_config.flags[i], LED_FLAG_UNDERGLOW)) { */
-/*             rgb_matrix_set_color(i, 0, 204, 255); */
-/*       } */
-/*     } */
-/*   } */
-
-/*   //funl layer */
-/*   if (IS_LAYER_ON(_NL)) { */
-/*     for (uint8_t i = 0; i < DRIVER_LED_TOTAL; ++i) { */
-/*       if (HAS_ANY_FLAGS(g_led_config.flags[i], LED_FLAG_UNDERGLOW)) { */
-/*             rgb_matrix_set_color(i, 255, 0, 0); */
-/*       } */
-/*     } */
-/*   } */
-
-/*   //nsl layer */
-/*   if (IS_LAYER_ON(_MS)) { */
-/*     for (uint8_t i = 0; i < DRIVER_LED_TOTAL; ++i) { */
-/*       if (HAS_ANY_FLAGS(g_led_config.flags[i], LED_FLAG_UNDERGLOW)) { */
-/*             rgb_matrix_set_color(i, 51, 0, 255); */
-/*       } */
-/*     } */
-/*   } */
-
-/*   //nssl layer */
-/*   if (IS_LAYER_ON(_FN)) { */
-/*     for (uint8_t i = 0; i < DRIVER_LED_TOTAL; ++i) { */
-/*       if (HAS_ANY_FLAGS(g_led_config.flags[i], LED_FLAG_UNDERGLOW)) { */
-/*             rgb_matrix_set_color(i, 0, 255, 0); */
-/*       } */
-/*     } */
-/*   } */
-
-/*   //game layer */
-/*   if (IS_LAYER_ON(_LOWER)) { */
-/*     for (uint8_t i = 0; i < DRIVER_LED_TOTAL; ++i) { */
-/*       if (HAS_ANY_FLAGS(g_led_config.flags[i], LED_FLAG_UNDERGLOW)) { */
-/*             rgb_matrix_set_color(i, 0, 204, 255); */
-/*       } */
-/*     } */
-/*   } */
-
-/*   //secgame layer */
-/*   if (IS_LAYER_ON(_RAISE)) { */
-/*     for (uint8_t i = 0; i < DRIVER_LED_TOTAL; ++i) { */
-/*       if (HAS_ANY_FLAGS(g_led_config.flags[i], LED_FLAG_UNDERGLOW)) { */
-/*             rgb_matrix_set_color(i, 255, 0, 0); */
-/*       } */
-/*     } */
-/*   } */
-
-/* } */
-
 // =============================================================================
 // KEYMAP SECTION
 // =============================================================================
@@ -216,17 +303,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_BL] = LAYOUT_planck_mit(
-    LCMD_T(KC_TAB),  KC_Q,                         KC_W,                         LT(_MS,KC_E), KC_R,  KC_T,          KC_Y,  KC_U,            KC_I,    KC_O,   KC_P,       RCMD_T(KC_BSPC),
-    LCTL_T(KC_ESC),  KC_A,                         KC_S,                         LT(_VI,KC_D), KC_F,  KC_G,          KC_H,  KC_J,            KC_K,    KC_L,   TD(SEMI_),  RCTL_T(KC_QUOT),
-    KC_LSPO,         KC_Z,                         KC_X,                         KC_C,         KC_V,  KC_B,          KC_N,  KC_M,            KC_COMM, KC_DOT, TD(SL_HLP), KC_RSFT,
-    OS_HYPR, MT(MOD_LGUI|MOD_LCTL,KC_ESC), MT(MOD_LGUI|MOD_LALT,KC_SPC), KC_LALT,      LOWER, ALT_T(KC_SPC), OS_LCAG, RAISE, KC_DOWN, KC_UP,  SGUI_T(KC_RGHT)
+    T_G_TAB, KC_Q,     KC_W,     L_MS_E, KC_R,   KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    RCMD_T(KC_BSPC),
+    T_C_ESC, KC_A,     KC_S,     L_VI_D, KC_F,   KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    TD_SEMI, RCTL_T(KC_QUOT),
+    KC_LSPO, KC_Z,     KC_X,     KC_C,   KC_V,   KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  TD_HELP, KC_RSFT,
+    OS_HYPR, M_GC_ESC, M_GA_SPC, LOWER,  NUMPAD, T_A_SPC,          OS_LCAG, OS_LCAG, KC_DOWN, KC_UP,   SGUI_T(KC_ENT)
 ),
   /* VI layer */
  [_VI] = LAYOUT_planck_mit(
-    _______, _______, _______, _______, _______, _______, KC_HOME,    KC_PGDN,  KC_PGUP, KC_END,    XXXXXXX, XXXXXXX,
-    _______, KC_LCMD, KC_LALT, _______, KC_LSFT, KC_LEAD, KC_LEFT,    KC_DOWN,  KC_UP,   KC_RIGHT,  KC_F19,  KC_CAPS,
+    _______, _______, _______, _______, _______, _______, KC_HOME,    KC_PGDN,  KC_PGUP, KC_END,    XXXXXXX,     XXXXXXX,
+    _______, KC_LCMD, KC_LALT, _______, KC_LSFT, KC_LEAD, KC_LEFT,    KC_DOWN,  KC_UP,   KC_RIGHT,  KC_F19,      KC_CAPS,
     XXXXXXX, MO(_NL), _______, _______, _______, _______, A(KC_BSPC), KC_BSPC,  KC_DEL,  A(KC_DEL), TD(B_F_DEL), _______,
-    _______, _______, _______, _______, _______,      _______,        _______,  _______, _______,   _______, _______
+    _______, _______, _______, _______, _______, _______,             _______,  _______, _______,   _______,     _______
 ),
  /* NL layer */
  [_NL] = LAYOUT_planck_mit(
@@ -261,10 +348,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_planck_mit(
-    KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR,    KC_ASTR,    KC_LPRN, KC_RPRN, KC_BSPC,
-    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_UNDS,    KC_PLUS,    KC_LCBR, KC_RCBR, KC_PIPE,
-    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  S(KC_NUHS), S(KC_NUBS), KC_HOME, KC_END,  _______,
-    _______, _______, _______, _______, _______, _______, _______,    KC_MNXT,    KC_VOLD, KC_VOLU, KC_MPLY
+    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   _______, _______, _______,    _______, _______, _______,
+    KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_MPRV, KC_VOLD, KC_VOLU,    KC_MNXT, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______, KC_MUTE, S(KC_NUBS), _______, _______, _______,
+    _______, _______, _______, _______, _______, _______,          _______, _______,    _______, _______, _______
 ),
 
 /* Raise
@@ -278,37 +365,37 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
  * `-----------------------------------------------------------------------------------'
  */
-[_RAISE] = LAYOUT_planck_mit(
-    KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
-    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
-    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NUHS, KC_NUBS, KC_PGUP, KC_PGDN, _______,
-    _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
-),
+/* [_RAISE] = LAYOUT_planck_mit( */
+/*     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, */
+/*     KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS, */
+/*     _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NUHS, KC_NUBS, KC_PGUP, KC_PGDN, _______, */
+/*     _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY */
+/* ), */
 
-/* Adjust (Lower + Raise)
- *                      v------------------------RGB CONTROL--------------------v
- * ,-----------------------------------------------------------------------------------.
- * |      | Reset|Debug | RGB  |RGBMOD| HUE+ | HUE- | SAT+ | SAT- |BRGTH+|BRGTH-|  Del |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      |      |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      |      |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      |      |      |      |      |
- * `-----------------------------------------------------------------------------------'
- */
-[_ADJUST] = LAYOUT_planck_mit(
-    _______, RESET,   DEBUG,   RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD, KC_DEL ,
-    _______, _______, _______, _______, _______, _______, _______, _______,  _______,  _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______,  _______,  _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______
-)
+/* /\* Adjust (Lower + Raise) */
+/*  *                      v------------------------RGB CONTROL--------------------v */
+/*  * ,-----------------------------------------------------------------------------------. */
+/*  * |      | Reset|Debug | RGB  |RGBMOD| HUE+ | HUE- | SAT+ | SAT- |BRGTH+|BRGTH-|  Del | */
+/*  * |------+------+------+------+------+------+------+------+------+------+------+------| */
+/*  * |      |      |      |      |      |      |      |      |      |      |      |      | */
+/*  * |------+------+------+------+------+------+------+------+------+------+------+------| */
+/*  * |      |      |      |      |      |      |      |      |      |      |      |      | */
+/*  * |------+------+------+------+------+------+------+------+------+------+------+------| */
+/*  * |      |      |      |      |      |             |      |      |      |      |      | */
+/*  * `-----------------------------------------------------------------------------------' */
+/*  *\/ */
+/* [_ADJUST] = LAYOUT_planck_mit( */
+/*     _______, RESET,   DEBUG,   RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD, KC_DEL , */
+/*     _______, _______, _______, _______, _______, _______, _______, _______,  _______,  _______, _______, _______, */
+/*     _______, _______, _______, _______, _______, _______, _______, _______,  _______,  _______, _______, _______, */
+/*     _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______ */
+/* ) */
 
 };
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-  return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
-}
+/* layer_state_t layer_state_set_user(layer_state_t state) { */
+/*   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST); */
+/* } */
 
 
 // =============================================================================
