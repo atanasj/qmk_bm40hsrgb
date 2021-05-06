@@ -13,6 +13,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 #include QMK_KEYBOARD_H
 
 enum layers {
@@ -21,9 +22,7 @@ enum layers {
   _NL,
   _MS,
   _FN,
-  _LOWER,
-  /* _RAISE, */
-  /* _ADJUST */
+  _LOWER
 };
 
 #include "keymap_combo.h"
@@ -33,7 +32,6 @@ enum layers {
 // =============================================================================
 
 #define LOWER  LT(_LOWER, KC_SPC)
-/* #define RAISE  MO(_RAISE) */
 #define NUMPAD LT(_NL, KC_SPC)
 #define L_VI_D LT(_VI, KC_D)
 #define L_MS_E LT(_MS, KC_E)
@@ -48,146 +46,107 @@ enum layers {
 #define T_A_SPC ALT_T(KC_SPC)
 #define TD_SEMI TD(SEMI_)
 #define TD_HELP TD(SL_HLP)
+#define T_SHDOT LSFT_T(KC_PDOT)
 
 // =============================================================================
 // LED SECTION
 // =============================================================================
+// TODO figure out what he config means and customise to my liking
 
-
-/* void rgb_matrix_indicators_user(void) { */
-
-/*   for (uint8_t i = 0; i < DRIVER_LED_TOTAL; ++i) { */
-/*     if (HAS_ANY_FLAGS(g_led_config.flags[i], LED_FLAG_MODIFIER)) { */
-/*         rgb_matrix_set_color(i, 0, 0, 0); */
-/*     } */
-/*     if (HAS_ANY_FLAGS(g_led_config.flags[i], LED_FLAG_KEYLIGHT)) { */
-/*         rgb_matrix_set_color(i, 0, 0, 0); */
-/*     } */
-/*   } */
-
-/*   //capslock */
-/*   if (host_keyboard_led_state().caps_lock) { */
-/*     for (uint8_t i = 0; i < DRIVER_LED_TOTAL; ++i) { */
-/*       if (HAS_ANY_FLAGS(g_led_config.flags[i], LED_FLAG_UNDERGLOW)) { */
-/*             rgb_matrix_set_color(i, 255, 255, 255); */
-/*       } */
-/*     } */
-/*   } */
-
-/*   //game layer */
-/*   if (IS_LAYER_ON(_VI)) { */
-/*     for (uint8_t i = 0; i < DRIVER_LED_TOTAL; ++i) { */
-/*       if (HAS_ANY_FLAGS(g_led_config.flags[i], LED_FLAG_UNDERGLOW)) { */
-/*             rgb_matrix_set_color(i, 0, 204, 255); */
-/*       } */
-/*     } */
-/*   } */
-
-/*   //secgame layer */
-/*   if (IS_LAYER_ON(_NL)) { */
-/*     for (uint8_t i = 0; i < DRIVER_LED_TOTAL; ++i) { */
-/*       if (HAS_ANY_FLAGS(g_led_config.flags[i], LED_FLAG_UNDERGLOW)) { */
-/*             rgb_matrix_set_color(i, 255, 0, 0); */
-/*       } */
-/*     } */
-/*   } */
-
-/* } */
+bool is_led_on = true;
 
 //layer led colors
 
 void rgb_matrix_indicators_user(void) {
 
 //game indicators
-
-/* if(IS_LAYER_ON(_BL)) { */
-/*   rgb_matrix_set_color(11, 0, 40, 50); */
-/* } */
-
+//
 if(IS_LAYER_ON(_LOWER)) {
-  rgb_matrix_set_color(11, 50, 0, 0);
+  /* rgb_matrix_set_color(11, 50, 0, 0); */
+  rgb_matrix_set_color_all(50, 0, 0);
 }
 
 //layer indicators
 
-if(IS_LAYER_ON(_BL)) {
-  rgb_matrix_set_color(40, 0, 40, 50);
-
-  rgb_matrix_set_color(19, 0, 40, 50);
-  rgb_matrix_set_color(20, 0, 40, 50);
-  rgb_matrix_set_color(21, 0, 40, 50);
-  rgb_matrix_set_color(22, 0, 40, 50);
-}
+/* if(IS_LAYER_ON(_BL)) { */
+/*   rgb_matrix_set_color_all(0, 40, 50); */
+/*   /\* rgb_matrix_set_color(40, 0, 40, 50); *\/ */
+/*   /\* rgb_matrix_set_color(19, 0, 40, 50); *\/ */
+/*   /\* rgb_matrix_set_color(20, 0, 40, 50); *\/ */
+/*   /\* rgb_matrix_set_color(21, 0, 40, 50); *\/ */
+/*   /\* rgb_matrix_set_color(22, 0, 40, 50); *\/ */
+/* } */
 
 if(IS_LAYER_ON(_VI)) {
-  rgb_matrix_set_color(39, 50, 10, 20);
-
-  rgb_matrix_set_color(19, 50, 10, 20);
-
-  rgb_matrix_set_color(22, 50, 10, 20);
-
-  rgb_matrix_set_color(42, 50, 10, 20);
+  rgb_matrix_set_color_all(50, 10, 20);
+  /* rgb_matrix_set_color(39, 50, 10, 20); */
+  /* rgb_matrix_set_color(19, 50, 10, 20); */
+  /* rgb_matrix_set_color(22, 50, 10, 20); */
+  /* rgb_matrix_set_color(42, 50, 10, 20); */
 }
 
 if(IS_LAYER_ON(_NL)) {
-  rgb_matrix_set_color(43, 50, 0, 0);
+  rgb_matrix_set_color_all(50, 0, 0);
+  /* rgb_matrix_set_color(43, 50, 0, 0); */
 
-  rgb_matrix_set_color(1, 50, 0, 0);
-  rgb_matrix_set_color(2, 50, 0, 0);
-  rgb_matrix_set_color(3, 50, 0, 0);
-  rgb_matrix_set_color(4, 50, 0, 0);
+  /* rgb_matrix_set_color(1, 50, 0, 0); */
+  /* rgb_matrix_set_color(2, 50, 0, 0); */
+  /* rgb_matrix_set_color(3, 50, 0, 0); */
+  /* rgb_matrix_set_color(4, 50, 0, 0); */
 
-  rgb_matrix_set_color(13, 50, 0, 0);
-  rgb_matrix_set_color(14, 50, 0, 0);
-  rgb_matrix_set_color(15, 50, 0, 0);
-  rgb_matrix_set_color(16, 50, 0, 0);
+  /* rgb_matrix_set_color(13, 50, 0, 0); */
+  /* rgb_matrix_set_color(14, 50, 0, 0); */
+  /* rgb_matrix_set_color(15, 50, 0, 0); */
+  /* rgb_matrix_set_color(16, 50, 0, 0); */
 
-  rgb_matrix_set_color(25, 50, 0, 0);
-  rgb_matrix_set_color(26, 50, 0, 0);
-  rgb_matrix_set_color(27, 50, 0, 0);
-  rgb_matrix_set_color(28, 50, 0, 0);
+  /* rgb_matrix_set_color(25, 50, 0, 0); */
+  /* rgb_matrix_set_color(26, 50, 0, 0); */
+  /* rgb_matrix_set_color(27, 50, 0, 0); */
+  /* rgb_matrix_set_color(28, 50, 0, 0); */
 }
 
 if(IS_LAYER_ON(_MS)) {
-  rgb_matrix_set_color(42, 10, 0, 50);
+  rgb_matrix_set_color_all(10, 0, 50);
+  /* rgb_matrix_set_color(42, 10, 0, 50); */
 
-  rgb_matrix_set_color(2, 10, 0, 50);
-  rgb_matrix_set_color(3, 10, 0, 50);
-  rgb_matrix_set_color(4, 10, 0, 50);
+  /* rgb_matrix_set_color(2, 10, 0, 50); */
+  /* rgb_matrix_set_color(3, 10, 0, 50); */
+  /* rgb_matrix_set_color(4, 10, 0, 50); */
 
-  rgb_matrix_set_color(14, 10, 0, 50);
-  rgb_matrix_set_color(15, 10, 0, 50);
-  rgb_matrix_set_color(16, 10, 0, 50);
+  /* rgb_matrix_set_color(14, 10, 0, 50); */
+  /* rgb_matrix_set_color(15, 10, 0, 50); */
+  /* rgb_matrix_set_color(16, 10, 0, 50); */
 
-  rgb_matrix_set_color(26, 10, 0, 50);
-  rgb_matrix_set_color(27, 10, 0, 50);
-  rgb_matrix_set_color(28, 10, 0, 50);
+  /* rgb_matrix_set_color(26, 10, 0, 50); */
+  /* rgb_matrix_set_color(27, 10, 0, 50); */
+  /* rgb_matrix_set_color(28, 10, 0, 50); */
 
-  rgb_matrix_set_color(38, 10, 0, 50);
-  rgb_matrix_set_color(39, 10, 0, 50);
-  rgb_matrix_set_color(40, 10, 0, 50);
+  /* rgb_matrix_set_color(38, 10, 0, 50); */
+  /* rgb_matrix_set_color(39, 10, 0, 50); */
+  /* rgb_matrix_set_color(40, 10, 0, 50); */
 }
 
 if(IS_LAYER_ON(_FN)) {
-  rgb_matrix_set_color(41, 0, 50, 1.9);
+  rgb_matrix_set_color_all(0, 50, 1.9);
+  /* rgb_matrix_set_color(41, 0, 50, 1.9); */
 
-  rgb_matrix_set_color(1, 0, 50, 1.9);
-  rgb_matrix_set_color(2, 0, 50, 1.9);
-  rgb_matrix_set_color(3, 0, 50, 1.9);
-  rgb_matrix_set_color(4, 0, 50, 1.9);
-  rgb_matrix_set_color(5, 0, 50, 1.9);
+  /* rgb_matrix_set_color(1, 0, 50, 1.9); */
+  /* rgb_matrix_set_color(2, 0, 50, 1.9); */
+  /* rgb_matrix_set_color(3, 0, 50, 1.9); */
+  /* rgb_matrix_set_color(4, 0, 50, 1.9); */
+  /* rgb_matrix_set_color(5, 0, 50, 1.9); */
 
-  rgb_matrix_set_color(13, 0, 50, 1.9);
-  rgb_matrix_set_color(14, 0, 50, 1.9);
-  rgb_matrix_set_color(15, 0, 50, 1.9);
-  rgb_matrix_set_color(16, 0, 50, 1.9);
-  rgb_matrix_set_color(17, 0, 50, 1.9);
+  /* rgb_matrix_set_color(13, 0, 50, 1.9); */
+  /* rgb_matrix_set_color(14, 0, 50, 1.9); */
+  /* rgb_matrix_set_color(15, 0, 50, 1.9); */
+  /* rgb_matrix_set_color(16, 0, 50, 1.9); */
+  /* rgb_matrix_set_color(17, 0, 50, 1.9); */
 
-  rgb_matrix_set_color(25, 0, 50, 1.9);
-  rgb_matrix_set_color(26, 0, 50, 1.9);
-  rgb_matrix_set_color(27, 0, 50, 1.9);
-  rgb_matrix_set_color(28, 0, 50, 1.9);
-  rgb_matrix_set_color(29, 0, 50, 1.9);
+  /* rgb_matrix_set_color(25, 0, 50, 1.9); */
+  /* rgb_matrix_set_color(26, 0, 50, 1.9); */
+  /* rgb_matrix_set_color(27, 0, 50, 1.9); */
+  /* rgb_matrix_set_color(28, 0, 50, 1.9); */
+  /* rgb_matrix_set_color(29, 0, 50, 1.9); */
 
 }
 
@@ -214,9 +173,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
     case SUSPEND:
         if (record->event.pressed) {
-            SEND_STRING(SS_LCTL(SS_LGUI("q")) SS_DELAY(500) SS_TAP(X_ESC));
+            if(is_led_on) {
+                is_led_on = false;
+                rgblight_disable();
+                SEND_STRING(SS_LCTL(SS_LGUI("q")) SS_DELAY(500) SS_TAP(X_ESC));
+            }
         }
         return true;
+    default:
+        if (record->event.pressed) {
+            if(!is_led_on) {
+                is_led_on = true;
+                rgblight_enable();
+            }
+        }
     }
     return true;
 }
@@ -290,111 +260,46 @@ bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
 // =============================================================================
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
-/* Qwerty
- * ,-----------------------------------------------------------------------------------.
- * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Esc  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | BLTog| Ctrl | Alt  | GUI  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
- * `-----------------------------------------------------------------------------------'
- */
 [_BL] = LAYOUT_planck_mit(
     T_G_TAB, KC_Q,     KC_W,     L_MS_E, KC_R,   KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    RCMD_T(KC_BSPC),
     T_C_ESC, KC_A,     KC_S,     L_VI_D, KC_F,   KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    TD_SEMI, RCTL_T(KC_QUOT),
     KC_LSPO, KC_Z,     KC_X,     KC_C,   KC_V,   KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  TD_HELP, KC_RSFT,
     OS_HYPR, M_GC_ESC, M_GA_SPC, LOWER,  NUMPAD, T_A_SPC,          OS_LCAG, OS_LCAG, KC_DOWN, KC_UP,   SGUI_T(KC_ENT)
 ),
-  /* VI layer */
- [_VI] = LAYOUT_planck_mit(
+[_VI] = LAYOUT_planck_mit(
     _______, _______, _______, _______, _______, _______, KC_HOME,    KC_PGDN,  KC_PGUP, KC_END,    XXXXXXX,     XXXXXXX,
     _______, KC_LCMD, KC_LALT, _______, KC_LSFT, KC_LEAD, KC_LEFT,    KC_DOWN,  KC_UP,   KC_RIGHT,  KC_F19,      KC_CAPS,
     XXXXXXX, MO(_NL), _______, _______, _______, _______, A(KC_BSPC), KC_BSPC,  KC_DEL,  A(KC_DEL), TD(B_F_DEL), _______,
     _______, _______, _______, _______, _______, _______,             _______,  _______, _______,   _______,     _______
 ),
- /* NL layer */
- [_NL] = LAYOUT_planck_mit(
-    XXXXXXX, XXXXXXX, XXXXXXX, _______,  XXXXXXX,         XXXXXXX, XXXXXXX, KC_7,    KC_8,    KC_9,    KC_EQL,  XXXXXXX,
-    _______, KC_LGUI, KC_LALT, _______,  LSFT_T(KC_PDOT), XXXXXXX, XXXXXXX, KC_4,    KC_5,    KC_6,    KC_MINS, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_LGUI,         XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    KC_PSLS, XXXXXXX,
-    XXXXXXX, XXXXXXX, _______, _______,  _______,         KC_0,             _______, _______, XXXXXXX, XXXXXXX, XXXXXXX
+[_NL] = LAYOUT_planck_mit(
+    XXXXXXX, XXXXXXX, XXXXXXX, _______,  XXXXXXX, XXXXXXX, XXXXXXX, KC_7,    KC_8,    KC_9,    KC_EQL,  XXXXXXX,
+    _______, KC_LGUI, KC_LALT, _______,  T_SHDOT, XXXXXXX, XXXXXXX, KC_4,    KC_5,    KC_6,    KC_MINS, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_LGUI, XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    KC_PSLS, XXXXXXX,
+    XXXXXXX, XXXXXXX, _______, _______,  _______, KC_0,             _______, _______, XXXXXXX, XXXXXXX, XXXXXXX
  ),
- /* MS layer */
  [_MS] = LAYOUT_planck_mit(
     KC_ACL0, KC_ACL2, KC_ACL1, _______, KC_R,    XXXXXXX, KC_WH_L, KC_WH_U,    KC_WH_D, KC_WH_R, XXXXXXX, XXXXXXX,
     _______, KC_A,    KC_S,    XXXXXXX, XXXXXXX, XXXXXXX, KC_MS_L, KC_MS_D,    KC_MS_U, KC_MS_R, XXXXXXX, XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, C(G(KC_D)), XXXXXXX, KC_BTN2, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,      KC_BTN1,     XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,      KC_BTN1,     XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
  ),
-// FN layer
  [_FN] = LAYOUT_planck_mit(
     SUSPEND, S(KC_GRV),  KC_GRV,  KC_BSLS, S(KC_BSLS), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     XXXXXXX, S(KC_LBRC), KC_LBRC, KC_RBRC, S(KC_RBRC), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,
     XXXXXXX, S(KC_MINS), XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    RESET,   DEBUG,      RGB_TOG, RGB_MOD, RGB_HUI,    RGB_HUD,          RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, XXXXXXX
+    RGB_TOG, RGB_MOD,    RGB_HUI, RGB_HUD, RGB_SAI,    RGB_SAD,          RGB_VAI, RGB_VAD, XXXXXXX, DEBUG,   RESET
 ),
-/* Lower
- * ,-----------------------------------------------------------------------------------.
- * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | Bksp |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   _  |   +  |   {  |   }  |  |   |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO ~ |ISO | | Home | End  |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
- * `-----------------------------------------------------------------------------------'
- */
 [_LOWER] = LAYOUT_planck_mit(
     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   _______, _______, _______,    _______, _______, _______,
     KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_MPRV, KC_VOLD, KC_VOLU,    KC_MNXT, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, KC_MUTE, S(KC_NUBS), _______, _______, _______,
     _______, _______, _______, _______, _______, _______,          _______, _______,    _______, _______, _______
-),
-
-/* Raise
- * ,-----------------------------------------------------------------------------------.
- * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   -  |   =  |   [  |   ]  |  \   |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO # |ISO / |Pg Up |Pg Dn |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
- * `-----------------------------------------------------------------------------------'
- */
-/* [_RAISE] = LAYOUT_planck_mit( */
-/*     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, */
-/*     KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS, */
-/*     _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NUHS, KC_NUBS, KC_PGUP, KC_PGDN, _______, */
-/*     _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY */
-/* ), */
-
-/* /\* Adjust (Lower + Raise) */
-/*  *                      v------------------------RGB CONTROL--------------------v */
-/*  * ,-----------------------------------------------------------------------------------. */
-/*  * |      | Reset|Debug | RGB  |RGBMOD| HUE+ | HUE- | SAT+ | SAT- |BRGTH+|BRGTH-|  Del | */
-/*  * |------+------+------+------+------+------+------+------+------+------+------+------| */
-/*  * |      |      |      |      |      |      |      |      |      |      |      |      | */
-/*  * |------+------+------+------+------+------+------+------+------+------+------+------| */
-/*  * |      |      |      |      |      |      |      |      |      |      |      |      | */
-/*  * |------+------+------+------+------+------+------+------+------+------+------+------| */
-/*  * |      |      |      |      |      |             |      |      |      |      |      | */
-/*  * `-----------------------------------------------------------------------------------' */
-/*  *\/ */
-/* [_ADJUST] = LAYOUT_planck_mit( */
-/*     _______, RESET,   DEBUG,   RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD, KC_DEL , */
-/*     _______, _______, _______, _______, _______, _______, _______, _______,  _______,  _______, _______, _______, */
-/*     _______, _______, _______, _______, _______, _______, _______, _______,  _______,  _______, _______, _______, */
-/*     _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______ */
-/* ) */
-
+)
 };
 
 /* layer_state_t layer_state_set_user(layer_state_t state) { */
-/*   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST); */
+/*   return update_tri_layer_state(state, _LOWER, _FN, _ADJUST); */
 /* } */
 
 
