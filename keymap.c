@@ -476,11 +476,11 @@ void matrix_scan_user(void) {
             SEND_STRING(" %!in% ");
         }
         SEQ_TWO_KEYS(KC_E, KC_T) {
-            SEND_STRING(SS_LALT("D83D+DC83"));
+            SEND_STRING(SS_LALT("D83D+DC83")); // 💃
         }
-        /* SEQ_TWO_KEYS(KC_E, KC_S) { */
-        /*     SEND_STRING(SS_TAP(SNEK)); */
-        /* } */
+        SEQ_TWO_KEYS(KC_E, KC_P) {
+            SEND_STRING(SS_LALT("D83D+DCA9")); // 💩
+        }
     }
 }
 
