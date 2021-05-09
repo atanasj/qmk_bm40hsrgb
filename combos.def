@@ -1,5 +1,3 @@
-#define OS_CALT OSM(MOD_BIT(KC_LGUI) | MOD_BIT(KC_LALT))
-
 // base-layer combos
 COMB(jlBspc,     KC_BSPC,         KC_J, KC_L)
 COMB(jkTab,      KC_TAB,          KC_J, KC_K)
@@ -38,7 +36,8 @@ COMB(flF6,       KC_F6,           KC_F, KC_L)
 /* COMB(leftMETA,   C(A(KC_LGUI)),   KC_W, KC_F) */
 /* COMB(rightMETA,  C(A(KC_LGUI)),   KC_J, KC_O) */
 /* SUBS(pasta,       "I'd just like to interject for a moment.",       KC_H, KC_J, KC_K, KC_L) */
-/* SUBS(helloWorld, "QMK is pretty rad eh?", KC_H, KC_J) */
+SUBS(hellorld, "this is the new combo", KC_S, KC_F)
+SUBS(helloWorld, "QMK is pretty rad eh?", KC_D, KC_F)
 
 // layer toggle
 /* TOGG(viTogg,      _VI,            KC_V, KC_L) */

@@ -25,6 +25,7 @@ enum layers {
   _LOWER
 };
 
+#include "action_tapping.h" // necessary for action_tapping_process
 #include "keymap_combo.h"
 
 // =============================================================================
