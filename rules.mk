@@ -5,5 +5,5 @@ COMBO_ENABLE = yes
 MOUSEKEY_ENABLE = yes
 TAP_DANCE_ENABLE = yes
 LEADER_ENABLE = yes
-# RGB_MATRIX_ENABLE = no
 EXTRAKEY_ENABLE = yes # Audio control and System control
+UNICODEMAP_ENABLE = yes

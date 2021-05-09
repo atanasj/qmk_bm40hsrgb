@@ -31,8 +31,9 @@ enum layers {
 // KEY DEF SECTION
 // =============================================================================
 
-#define LOWER  LT(_LOWER, KC_SPC)
+#define LOWER  LT(_LOWER, KC_LSFT)
 #define NUMPAD LT(_NL, KC_SPC)
+#define FN_LAY LT(_FN, KC_ENT)
 #define L_VI_D LT(_VI, KC_D)
 #define L_MS_E LT(_MS, KC_E)
 
@@ -53,107 +54,116 @@ enum layers {
 // =============================================================================
 // TODO figure out what he config means and customise to my liking
 
+// track led status
 bool is_led_on = true;
 
 //layer led colors
-
 void rgb_matrix_indicators_user(void) {
 
-//game indicators
-//
 if(IS_LAYER_ON(_LOWER)) {
-  /* rgb_matrix_set_color(11, 50, 0, 0); */
-  rgb_matrix_set_color_all(50, 0, 0);
+  // function keys
+  rgb_matrix_set_color(0, 20, 88, 99);
+  rgb_matrix_set_color(1, 20, 88, 99);
+  rgb_matrix_set_color(2, 20, 88, 99);
+  rgb_matrix_set_color(3, 20, 88, 99);
+  rgb_matrix_set_color(4, 20, 88, 99);
+  rgb_matrix_set_color(5, 20, 88, 99);
+
+  rgb_matrix_set_color(12, 20, 88, 99);
+  rgb_matrix_set_color(13, 20, 88, 99);
+  rgb_matrix_set_color(14, 20, 88, 99);
+  rgb_matrix_set_color(15, 20, 88, 99);
+  rgb_matrix_set_color(16, 20, 88, 99);
+  rgb_matrix_set_color(17, 20, 88, 99);
+
+  // media controls
+  rgb_matrix_set_color(10, 0, 200, 0);
+  rgb_matrix_set_color(18, 0, 200, 0);
+  rgb_matrix_set_color(19, 0, 200, 0);
+  rgb_matrix_set_color(20, 0, 200, 0);
+  rgb_matrix_set_color(21, 0, 200, 0);
+
+  rgb_matrix_set_color(30, 0, 200, 0);
+
 }
-
-//layer indicators
-
-/* if(IS_LAYER_ON(_BL)) { */
-/*   rgb_matrix_set_color_all(0, 40, 50); */
-/*   /\* rgb_matrix_set_color(40, 0, 40, 50); *\/ */
-/*   /\* rgb_matrix_set_color(19, 0, 40, 50); *\/ */
-/*   /\* rgb_matrix_set_color(20, 0, 40, 50); *\/ */
-/*   /\* rgb_matrix_set_color(21, 0, 40, 50); *\/ */
-/*   /\* rgb_matrix_set_color(22, 0, 40, 50); *\/ */
-/* } */
-
 if(IS_LAYER_ON(_VI)) {
-  rgb_matrix_set_color_all(50, 10, 20);
-  /* rgb_matrix_set_color(39, 50, 10, 20); */
-  /* rgb_matrix_set_color(19, 50, 10, 20); */
-  /* rgb_matrix_set_color(22, 50, 10, 20); */
-  /* rgb_matrix_set_color(42, 50, 10, 20); */
+  /* rgb_matrix_set_color_all(0, 50, 50); */
+  rgb_matrix_set_color(6, 10, 50, 50);
+  rgb_matrix_set_color(7, 10, 50, 50);
+  rgb_matrix_set_color(8, 10, 50, 50);
+  rgb_matrix_set_color(9, 10, 50, 50);
+
+  rgb_matrix_set_color(18, 0, 50, 60);
+  rgb_matrix_set_color(19, 0, 50, 60);
+  rgb_matrix_set_color(20, 0, 50, 60);
+  rgb_matrix_set_color(21, 0, 50, 60);
+
+  rgb_matrix_set_color(30, 0, 50, 50);
+  rgb_matrix_set_color(31, 0, 50, 50);
+  rgb_matrix_set_color(32, 0, 50, 50);
+  rgb_matrix_set_color(33, 0, 50, 50);
+  rgb_matrix_set_color(34, 0, 50, 50);
 }
 
 if(IS_LAYER_ON(_NL)) {
-  rgb_matrix_set_color_all(50, 0, 0);
-  /* rgb_matrix_set_color(43, 50, 0, 0); */
+  /* rgb_matrix_set_color_all(255, 0, 0); */
+  rgb_matrix_set_color(7, 255, 0, 0);
+  rgb_matrix_set_color(8, 255, 0, 0);
+  rgb_matrix_set_color(9, 255, 0, 0);
+  rgb_matrix_set_color(10, 255, 0, 0);
 
-  /* rgb_matrix_set_color(1, 50, 0, 0); */
-  /* rgb_matrix_set_color(2, 50, 0, 0); */
-  /* rgb_matrix_set_color(3, 50, 0, 0); */
-  /* rgb_matrix_set_color(4, 50, 0, 0); */
+  rgb_matrix_set_color(19, 0, 0, 0);
+  rgb_matrix_set_color(20, 0, 0, 0);
+  rgb_matrix_set_color(21, 0, 0, 0);
+  rgb_matrix_set_color(22, 0, 0, 0);
 
-  /* rgb_matrix_set_color(13, 50, 0, 0); */
-  /* rgb_matrix_set_color(14, 50, 0, 0); */
-  /* rgb_matrix_set_color(15, 50, 0, 0); */
-  /* rgb_matrix_set_color(16, 50, 0, 0); */
+  rgb_matrix_set_color(31, 255, 0, 0);
+  rgb_matrix_set_color(32, 255, 0, 0);
+  rgb_matrix_set_color(33, 255, 0, 0);
+  rgb_matrix_set_color(34, 255, 0, 0);
 
-  /* rgb_matrix_set_color(25, 50, 0, 0); */
-  /* rgb_matrix_set_color(26, 50, 0, 0); */
-  /* rgb_matrix_set_color(27, 50, 0, 0); */
-  /* rgb_matrix_set_color(28, 50, 0, 0); */
+  rgb_matrix_set_color(43, 255, 0, 0);
 }
-
 if(IS_LAYER_ON(_MS)) {
-  rgb_matrix_set_color_all(10, 0, 50);
-  /* rgb_matrix_set_color(42, 10, 0, 50); */
+  rgb_matrix_set_color(6, 5, 89, 45);
+  rgb_matrix_set_color(7, 5, 89, 45);
+  rgb_matrix_set_color(8, 5, 89, 45);
+  rgb_matrix_set_color(9, 5, 89, 45);
 
-  /* rgb_matrix_set_color(2, 10, 0, 50); */
-  /* rgb_matrix_set_color(3, 10, 0, 50); */
-  /* rgb_matrix_set_color(4, 10, 0, 50); */
+  rgb_matrix_set_color(18, 5, 89, 45);
+  rgb_matrix_set_color(19, 5, 89, 45);
+  rgb_matrix_set_color(20, 5, 89, 45);
+  rgb_matrix_set_color(21, 5, 89, 45);
 
-  /* rgb_matrix_set_color(14, 10, 0, 50); */
-  /* rgb_matrix_set_color(15, 10, 0, 50); */
-  /* rgb_matrix_set_color(16, 10, 0, 50); */
-
-  /* rgb_matrix_set_color(26, 10, 0, 50); */
-  /* rgb_matrix_set_color(27, 10, 0, 50); */
-  /* rgb_matrix_set_color(28, 10, 0, 50); */
-
-  /* rgb_matrix_set_color(38, 10, 0, 50); */
-  /* rgb_matrix_set_color(39, 10, 0, 50); */
-  /* rgb_matrix_set_color(40, 10, 0, 50); */
+  rgb_matrix_set_color(30, 5, 89, 45);
+  rgb_matrix_set_color(31, 5, 89, 45);
+  rgb_matrix_set_color(32, 5, 89, 45);
+  rgb_matrix_set_color(33, 5, 89, 45);
+  rgb_matrix_set_color(34, 5, 89, 45);
 }
-
 if(IS_LAYER_ON(_FN)) {
-  rgb_matrix_set_color_all(0, 50, 1.9);
-  /* rgb_matrix_set_color(41, 0, 50, 1.9); */
+  /* rgb_matrix_set_color_all(150, 9, 145); */
+  rgb_matrix_set_color(1, 0, 50, 1.9);
+  rgb_matrix_set_color(2, 0, 50, 1.9);
+  rgb_matrix_set_color(3, 0, 50, 1.9);
+  rgb_matrix_set_color(4, 0, 50, 1.9);
 
-  /* rgb_matrix_set_color(1, 0, 50, 1.9); */
-  /* rgb_matrix_set_color(2, 0, 50, 1.9); */
-  /* rgb_matrix_set_color(3, 0, 50, 1.9); */
-  /* rgb_matrix_set_color(4, 0, 50, 1.9); */
-  /* rgb_matrix_set_color(5, 0, 50, 1.9); */
+  rgb_matrix_set_color(13, 0, 50, 2.9);
+  rgb_matrix_set_color(14, 0, 50, 2.9);
+  rgb_matrix_set_color(15, 0, 50, 2.9);
+  rgb_matrix_set_color(16, 0, 50, 2.9);
+  rgb_matrix_set_color(17, 0, 50, 2.9);
 
-  /* rgb_matrix_set_color(13, 0, 50, 1.9); */
-  /* rgb_matrix_set_color(14, 0, 50, 1.9); */
-  /* rgb_matrix_set_color(15, 0, 50, 1.9); */
-  /* rgb_matrix_set_color(16, 0, 50, 1.9); */
-  /* rgb_matrix_set_color(17, 0, 50, 1.9); */
-
-  /* rgb_matrix_set_color(25, 0, 50, 1.9); */
-  /* rgb_matrix_set_color(26, 0, 50, 1.9); */
-  /* rgb_matrix_set_color(27, 0, 50, 1.9); */
-  /* rgb_matrix_set_color(28, 0, 50, 1.9); */
-  /* rgb_matrix_set_color(29, 0, 50, 1.9); */
+  rgb_matrix_set_color(24, 0, 50, 3.9);
+  rgb_matrix_set_color(25, 0, 50, 3.9);
+  rgb_matrix_set_color(26, 0, 50, 3.9);
 
 }
 
 //capslock leds
-
-if (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) {
-    rgb_matrix_set_color_all(50, 15.6, 0);
+  if (host_keyboard_led_state().caps_lock) {
+    rgb_matrix_sethsv_noeeprom(HSV_TEAL);
+    /* rgb_kmatrix_set_color_all(50, 50, 0); */
   }
 
 }
@@ -256,6 +266,22 @@ bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
 }
 
 // =============================================================================
+// UNICODE SECTION
+// =============================================================================
+
+enum unicode_names {
+    BANG,
+    IRONY,
+    SNEK
+};
+
+const uint32_t PROGMEM unicode_map[] = {
+    [BANG]  = 0x203D,  // ‽
+    [IRONY] = 0x2E2E,  // ⸮
+    [SNEK]  = 0x1F40D, // 🐍
+};
+//
+// =============================================================================
 // KEYMAP SECTION
 // =============================================================================
 
@@ -264,37 +290,37 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     T_G_TAB, KC_Q,     KC_W,     L_MS_E, KC_R,   KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    RCMD_T(KC_BSPC),
     T_C_ESC, KC_A,     KC_S,     L_VI_D, KC_F,   KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    TD_SEMI, RCTL_T(KC_QUOT),
     KC_LSPO, KC_Z,     KC_X,     KC_C,   KC_V,   KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  TD_HELP, KC_RSFT,
-    OS_HYPR, M_GC_ESC, M_GA_SPC, LOWER,  NUMPAD, T_A_SPC,          OS_LCAG, OS_LCAG, KC_DOWN, KC_UP,   SGUI_T(KC_ENT)
+    OS_HYPR, M_GC_ESC, M_GA_SPC, LOWER,  NUMPAD, T_A_SPC,          FN_LAY,  OS_LCAG, KC_DOWN, KC_UP,   SGUI_T(KC_ENT)
 ),
 [_VI] = LAYOUT_planck_mit(
     _______, _______, _______, _______, _______, _______, KC_HOME,    KC_PGDN,  KC_PGUP, KC_END,    XXXXXXX,     XXXXXXX,
     _______, KC_LCMD, KC_LALT, _______, KC_LSFT, KC_LEAD, KC_LEFT,    KC_DOWN,  KC_UP,   KC_RIGHT,  KC_F19,      KC_CAPS,
-    XXXXXXX, MO(_NL), _______, _______, _______, _______, A(KC_BSPC), KC_BSPC,  KC_DEL,  A(KC_DEL), TD(B_F_DEL), _______,
+    XXXXXXX, XXXXXXX, _______, _______, _______, _______, A(KC_BSPC), KC_BSPC,  KC_DEL,  A(KC_DEL), TD(B_F_DEL), _______,
     _______, _______, _______, _______, _______, _______,             _______,  _______, _______,   _______,     _______
 ),
 [_NL] = LAYOUT_planck_mit(
     XXXXXXX, XXXXXXX, XXXXXXX, _______,  XXXXXXX, XXXXXXX, XXXXXXX, KC_7,    KC_8,    KC_9,    KC_EQL,  XXXXXXX,
     _______, KC_LGUI, KC_LALT, _______,  T_SHDOT, XXXXXXX, XXXXXXX, KC_4,    KC_5,    KC_6,    KC_MINS, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_LGUI, XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    KC_PSLS, XXXXXXX,
-    XXXXXXX, XXXXXXX, _______, _______,  _______, KC_0,             _______, _______, XXXXXXX, XXXXXXX, XXXXXXX
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    KC_PSLS, XXXXXXX,
+    XXXXXXX, XXXXXXX, _______, _______,  _______, _______,          KC_0,    _______, XXXXXXX, XXXXXXX, XXXXXXX
  ),
  [_MS] = LAYOUT_planck_mit(
     KC_ACL0, KC_ACL2, KC_ACL1, _______, KC_R,    XXXXXXX, KC_WH_L, KC_WH_U,    KC_WH_D, KC_WH_R, XXXXXXX, XXXXXXX,
-    _______, KC_A,    KC_S,    XXXXXXX, XXXXXXX, XXXXXXX, KC_MS_L, KC_MS_D,    KC_MS_U, KC_MS_R, XXXXXXX, XXXXXXX,
+    _______, KC_A,    KC_S,    XXXXXXX, KC_F,    XXXXXXX, KC_MS_L, KC_MS_D,    KC_MS_U, KC_MS_R, XXXXXXX, XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, C(G(KC_D)), XXXXXXX, KC_BTN2, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,      KC_BTN1,     XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN1,          XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
  ),
  [_FN] = LAYOUT_planck_mit(
-    SUSPEND, S(KC_GRV),  KC_GRV,  KC_BSLS, S(KC_BSLS), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, S(KC_LBRC), KC_LBRC, KC_RBRC, S(KC_RBRC), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,
-    XXXXXXX, S(KC_MINS), XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    RGB_TOG, RGB_MOD,    RGB_HUI, RGB_HUD, RGB_SAI,    RGB_SAD,          RGB_VAI, RGB_VAD, XXXXXXX, DEBUG,   RESET
+    SUSPEND, KC_TILD, KC_GRV,  KC_BSLS, KC_PIPE, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, KC_LCBR, KC_LBRC, KC_RBRC, KC_RCBR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,
+    XXXXXXX, KC_UNDS, KC_LPRN, KC_RPRN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,          _______, RGB_VAI, RGB_VAD, DEBUG,   RESET
 ),
 [_LOWER] = LAYOUT_planck_mit(
-    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   _______, _______, _______,    _______, _______, _______,
-    KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_MPRV, KC_VOLD, KC_VOLU,    KC_MNXT, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, KC_MUTE, S(KC_NUBS), _______, _______, _______,
-    _______, _______, _______, _______, _______, _______,          _______, _______,    _______, _______, _______
+    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   _______, _______, KC_MPLY, _______, _______, _______,
+    KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, _______, _______,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MUTE, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 )
 };
 
@@ -362,9 +388,6 @@ void semi_finished(qk_tap_dance_state_t *state, void *user_data) {
     case SINGLE_TAP:
         register_code(KC_SCLN);
         break;
-    case SINGLE_HOLD:
-        layer_on(_FN);
-        break;
     case DOUBLE_TAP:
         register_code(KC_LSFT);
         register_code(KC_MINS);
@@ -375,9 +398,6 @@ void semi_reset(qk_tap_dance_state_t *state, void *user_data) {
     switch (semi_tap_state.state) {
     case SINGLE_TAP:
         unregister_code(KC_SCLN);
-        break;
-    case SINGLE_HOLD:
-        layer_off(_FN);
         break;
     case DOUBLE_TAP:
         unregister_code(KC_LSFT);
@@ -442,19 +462,25 @@ void matrix_scan_user(void) {
         leading = false;
         leader_end();
         // NOTE in built R operators
-        SEQ_ONE_KEY(KC_A) {
+        SEQ_TWO_KEYS(KC_R, KC_A) {
             /* needs to a as semi colon is a tap dance key */
             SEND_STRING(" <-");
         }
-        SEQ_ONE_KEY(KC_P) {
+        SEQ_TWO_KEYS(KC_R, KC_P) {
             SEND_STRING(" %>%");
         }
-        SEQ_ONE_KEY(KC_I) {
+        SEQ_TWO_KEYS(KC_R, KC_I) {
             SEND_STRING(" %in% ");
         }
-        SEQ_ONE_KEY(KC_N) {
+        SEQ_TWO_KEYS(KC_R, KC_N) {
             SEND_STRING(" %!in% ");
         }
+        SEQ_TWO_KEYS(KC_E, KC_T) {
+            SEND_STRING(SS_LALT("D83D+DC83"));
+        }
+        /* SEQ_TWO_KEYS(KC_E, KC_S) { */
+        /*     SEND_STRING(SS_TAP(SNEK)); */
+        /* } */
     }
 }
 
