@@ -10,9 +10,25 @@
 #define LEADER_PER_KEY_TIMING
 #define LEADER_TIMEOUT 500
 
+// Limits the max. amount of layers to 8 to save firmware memory.
+#define LAYER_STATE_8BIT
+
 #define COMBO_VARIABLE_LEN
 /* #define COMBO_COUNT 13 */
 #define COMBO_TERM 15
+// Set the mouse settings to a comfortable speed/accuracy trade-off
+// Assume the screen refresh rate is 60 Hz or higher
+// The default is 50. This makes the mouse ~3 times faster and more accurate
+// #undef to override default settings
+#undef MOUSEKEY_INTERVAL
+#define MOUSEKEY_INTERVAL 16
+// The default is 20. Since we made the mouse about 3 times faster with the previous setting,
+// give it more time to accelerate to max speed to retain precise control over short distances.
+#undef MOUSEKEY_TIME_TO_MAX
+#define MOUSEKEY_TIME_TO_MAX 40
+// The default is 300. Let's try and make this as low as possible while keeping the cursor responsive
+#undef MOUSEKEY_DELAY
+#define MOUSEKEY_DELAY 100
 
 #define MK_3_SPEED
 #define MK_MOMENTARY_ACCEL
