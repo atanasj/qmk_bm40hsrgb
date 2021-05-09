@@ -1,5 +1,6 @@
 LTO_ENABLE = yes				# reduces files size dramatically
-BOOTMAGIC_ENABLE = full
+# uses lite by default, if need this feature come back here
+# BOOTMAGIC_ENABLE = full
 # keep path to combos local to my keymap
 VPATH  +=  keyboards/bm40hsrgb/keymaps/atanas_def/g/
 COMBO_ENABLE = yes
