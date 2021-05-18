@@ -311,20 +311,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX, KC_UNDS, KC_LPRN, KC_RPRN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     _______, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,          _______, RGB_VAI, RGB_VAD, DEBUG,   RESET
 ),
+// NOTE quantum/process_keycode/process_midi.c
 [_MD] = LAYOUT_planck_mit(
-    MI_CHU,  MI_Cs,    MI_Ds,    XXXXXXX,   MI_Fs,    MI_Gs,     MI_As,    XXXXXXX,  MI_Cs_1,  MI_Ds_1,   XXXXXXX,   MI_Fs_1,
-    MI_MOD,  MI_C,     MI_D,     MI_E,      MI_F,     MI_G,      MI_A,     MI_B,     MI_C_1,   MI_D_1,    MI_E_1,    MI_F_1,
-    XXXXXXX, MI_VEL_1, MI_VEL_2, MI_VEL_3,  MI_VEL_4, MI_VEL_5,  MI_VEL_6, MI_VEL_7, MI_VEL_8, MI_VEL_9,  MI_VEL_10, XXXXXXX,
-    MI_SUS,  MI_OCTD,  MI_OCTU,  MI_MODSD,  MI_MODSU, MI_ALLOFF,           MI_TRNSD, MI_TRNSU, MI_TRNS_0, MI_SUS,    TG(_MD)
+    MI_CHU,  MI_Cs,    MI_Ds,   XXXXXXX,  MI_Fs,    MI_Gs,     MI_As,    XXXXXXX,  MI_Cs_1,   MI_Ds_1,  XXXXXXX,   MI_Fs_1,
+    MI_MOD,  MI_C,     MI_D,    MI_E,     MI_F,     MI_G,      MI_A,     MI_B,     MI_C_1,    MI_D_1,   MI_E_1,    MI_F_1,
+    MI_VELD, MI_VELU,  MI_PORT, MI_SOST,  MI_SOFT,  MI_LEG,    MI_BENDD, MI_BENDU, MI_VEL_8,  MI_OCT_0, MI_VEL_0, TG(_MD),
+    MI_SUS,  MI_OCTD,  MI_OCTU, MI_MODSD, MI_MODSU, MI_ALLOFF,           XXXXXXX,  MI_TRNS_0, MI_TRNSD, MI_TRNSU,  MI_SUS
 ),
-/* [_ML] = LAYOUT_60_ansi( */
-/*     TG(_ML), MI_VEL_1, MI_VEL_2, MI_VEL_3,  MI_VEL_4, MI_VEL_5, MI_VEL_6, MI_VEL_7, MI_VEL_8, MI_VEL_9, MI_VEL_10, XXXXXXX,   XXXXXXX, XXXXXXX, */
-/*     MI_CHU,  XXXXXXX,  MI_Cs,    MI_Ds,     XXXXXXX,  MI_Fs,    MI_Gs,    MI_As,    XXXXXXX,  MI_Cs_1,  MI_Ds_1,   XXXXXXX,   XXXXXXX, XXXXXXX, */
-/*     MI_MOD,  MI_C,     MI_D,     MI_E,      MI_F,     MI_G,     MI_A,     MI_B,     MI_C_1,   MI_D_1,   MI_E_1,    MI_F_1,             _______, */
-/*     MI_SUS,            MI_OCTD,  MI_OCTU,   MI_MODSD, MI_MODSU, XXXXXXX,  XXXXXXX,  XXXXXXX,  MI_TRNSD, MI_TRNSU,  MI_TRNS_0,          MI_SUS, */
-/*     _______, _______,  _______,                       MI_ALLOFF,                                        _______,   _______,   _______, _______ */
-/*   ), */
-
 };
 
 /* layer_state_t layer_state_set_user(layer_state_t state) { */
