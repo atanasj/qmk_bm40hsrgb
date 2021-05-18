@@ -21,8 +21,9 @@ enum layers {
   _VI,
   _NL,
   _MS,
+  _LOWER,
   _FN,
-  _LOWER
+  _MD
 };
 
 #include "keymap_combo.h"
@@ -52,9 +53,8 @@ enum layers {
 // =============================================================================
 // LED SECTION
 // =============================================================================
-// TODO figure out what he config means and customise to my liking
-
 // track led status
+// NOTE not sure if this is needed as taken from AP2 config
 bool is_led_on = true;
 
 //layer led colors
@@ -86,6 +86,11 @@ if(IS_LAYER_ON(_LOWER)) {
   rgb_matrix_set_color(30, 0, 200, 0);
 
 }
+
+if(IS_LAYER_ON(_MD)) {
+  rgb_matrix_set_color_all(255, 0, 0);
+}
+
 if(IS_LAYER_ON(_VI)) {
   /* rgb_matrix_set_color_all(0, 50, 50); */
   rgb_matrix_set_color(6, 10, 50, 50);
@@ -266,22 +271,6 @@ bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
 }
 
 // =============================================================================
-// UNICODE SECTION
-// =============================================================================
-
-enum unicode_names {
-    BANG,
-    IRONY,
-    SNEK
-};
-
-const uint32_t PROGMEM unicode_map[] = {
-    [BANG]  = 0x203D,  // ‽
-    [IRONY] = 0x2E2E,  // ⸮
-    [SNEK]  = 0x1F40D, // 🐍
-};
-//
-// =============================================================================
 // KEYMAP SECTION
 // =============================================================================
 
@@ -302,30 +291,44 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX, XXXXXXX, XXXXXXX, _______,  XXXXXXX, XXXXXXX, XXXXXXX, KC_7,    KC_8,    KC_9,    KC_EQL,  XXXXXXX,
     _______, KC_LGUI, KC_LALT, _______,  T_SHDOT, XXXXXXX, XXXXXXX, KC_4,    KC_5,    KC_6,    KC_MINS, XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    KC_PSLS, XXXXXXX,
-    XXXXXXX, XXXXXXX, _______, _______,  _______, _______,          KC_0,    _______, XXXXXXX, XXXXXXX, XXXXXXX
+    _______, XXXXXXX, _______, _______,  _______, _______,          KC_0,    _______, XXXXXXX, XXXXXXX, XXXXXXX
  ),
  [_MS] = LAYOUT_planck_mit(
     KC_ACL0, KC_ACL2, KC_ACL1, _______, KC_R,    XXXXXXX, KC_WH_L, KC_WH_U,    KC_WH_D, KC_WH_R, XXXXXXX, XXXXXXX,
     _______, KC_A,    KC_S,    XXXXXXX, KC_F,    XXXXXXX, KC_MS_L, KC_MS_D,    KC_MS_U, KC_MS_R, XXXXXXX, XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, C(G(KC_D)), XXXXXXX, KC_BTN2, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN1,          XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN1,          XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
  ),
- [_FN] = LAYOUT_planck_mit(
-    SUSPEND, KC_TILD, KC_GRV,  KC_BSLS, KC_PIPE, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, KC_LCBR, KC_LBRC, KC_RBRC, KC_RCBR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,
-    XXXXXXX, KC_UNDS, KC_LPRN, KC_RPRN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,          _______, RGB_VAI, RGB_VAD, DEBUG,   RESET
-),
 [_LOWER] = LAYOUT_planck_mit(
     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   _______, _______, KC_MPLY, _______, _______, _______,
     KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, _______, _______,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MUTE, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-)
+    _______, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX,          XXXXXXX, TG(_MD), XXXXXXX, XXXXXXX, XXXXXXX
+),
+[_FN] = LAYOUT_planck_mit(
+    SUSPEND, KC_TILD, KC_GRV,  KC_BSLS, KC_PIPE, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TOG,
+    XXXXXXX, KC_LCBR, KC_LBRC, KC_RBRC, KC_RCBR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,
+    XXXXXXX, KC_UNDS, KC_LPRN, KC_RPRN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    _______, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,          _______, RGB_VAI, RGB_VAD, DEBUG,   RESET
+),
+[_MD] = LAYOUT_planck_mit(
+    MI_CHU,  MI_Cs,    MI_Ds,    XXXXXXX,   MI_Fs,    MI_Gs,     MI_As,    XXXXXXX,  MI_Cs_1,  MI_Ds_1,   XXXXXXX,   MI_Fs_1,
+    MI_MOD,  MI_C,     MI_D,     MI_E,      MI_F,     MI_G,      MI_A,     MI_B,     MI_C_1,   MI_D_1,    MI_E_1,    MI_F_1,
+    XXXXXXX, MI_VEL_1, MI_VEL_2, MI_VEL_3,  MI_VEL_4, MI_VEL_5,  MI_VEL_6, MI_VEL_7, MI_VEL_8, MI_VEL_9,  MI_VEL_10, XXXXXXX,
+    MI_SUS,  MI_OCTD,  MI_OCTU,  MI_MODSD,  MI_MODSU, MI_ALLOFF,           MI_TRNSD, MI_TRNSU, MI_TRNS_0, MI_SUS,    TG(_MD)
+),
+/* [_ML] = LAYOUT_60_ansi( */
+/*     TG(_ML), MI_VEL_1, MI_VEL_2, MI_VEL_3,  MI_VEL_4, MI_VEL_5, MI_VEL_6, MI_VEL_7, MI_VEL_8, MI_VEL_9, MI_VEL_10, XXXXXXX,   XXXXXXX, XXXXXXX, */
+/*     MI_CHU,  XXXXXXX,  MI_Cs,    MI_Ds,     XXXXXXX,  MI_Fs,    MI_Gs,    MI_As,    XXXXXXX,  MI_Cs_1,  MI_Ds_1,   XXXXXXX,   XXXXXXX, XXXXXXX, */
+/*     MI_MOD,  MI_C,     MI_D,     MI_E,      MI_F,     MI_G,     MI_A,     MI_B,     MI_C_1,   MI_D_1,   MI_E_1,    MI_F_1,             _______, */
+/*     MI_SUS,            MI_OCTD,  MI_OCTU,   MI_MODSD, MI_MODSU, XXXXXXX,  XXXXXXX,  XXXXXXX,  MI_TRNSD, MI_TRNSU,  MI_TRNS_0,          MI_SUS, */
+/*     _______, _______,  _______,                       MI_ALLOFF,                                        _______,   _______,   _______, _______ */
+/*   ), */
+
 };
 
 /* layer_state_t layer_state_set_user(layer_state_t state) { */
-/*   return update_tri_layer_state(state, _LOWER, _FN, _ADJUST); */
+/*   return update_tri_layer_state(state, _LOWER, _FN, _MD); */
 /* } */
 
 
@@ -461,7 +464,7 @@ void matrix_scan_user(void) {
     LEADER_DICTIONARY() {
         leading = false;
         leader_end();
-        // NOTE in built R operators
+        // R section
         SEQ_TWO_KEYS(KC_R, KC_A) {
             /* needs to a as semi colon is a tap dance key */
             SEND_STRING(" <-");
@@ -475,6 +478,15 @@ void matrix_scan_user(void) {
         SEQ_TWO_KEYS(KC_R, KC_N) {
             SEND_STRING(" %!in% ");
         }
+        // Signature section
+        SEQ_TWO_KEYS(KC_S, KC_S) {
+            SEND_STRING("Cheers,  :-)" SS_TAP(X_ENT) SS_TAP(X_ENT) "Atanas");
+        }
+        // Kamoji section
+        SEQ_TWO_KEYS(KC_K, KC_F) {
+            send_unicode_string("(ノಠ痊ಠ)ノ彡┻━┻");
+        }
+        // Emoticons section
         SEQ_TWO_KEYS(KC_E, KC_T) {
             SEND_STRING(SS_LALT("D83D+DC83")); // 💃
         }
