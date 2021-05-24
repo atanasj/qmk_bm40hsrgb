@@ -34,9 +34,10 @@ enum layers {
 
 #define LOWER  LT(_LOWER, KC_LSFT)
 #define NUMPAD LT(_NL, KC_SPC)
-#define FN_LAY LT(_FN, KC_ENT)
+#define FN_LAY LT(_FN, KC_SPC)
 #define L_VI_D LT(_VI, KC_D)
 #define L_MS_E LT(_MS, KC_E)
+#define M_NUMP MO(_NL)
 
 #define OS_LCAG OSM(MOD_BIT(KC_LCTL) | MOD_BIT(KC_LGUI) | MOD_BIT(KC_LALT))
 #define OS_HYPR OSM(MOD_BIT(KC_LCTL) | MOD_BIT(KC_LGUI) | MOD_BIT(KC_LALT) | MOD_BIT(KC_LSFT))
@@ -117,10 +118,10 @@ if(IS_LAYER_ON(_NL)) {
   rgb_matrix_set_color(9, 255, 0, 0);
   rgb_matrix_set_color(10, 255, 0, 0);
 
-  rgb_matrix_set_color(19, 0, 0, 0);
-  rgb_matrix_set_color(20, 0, 0, 0);
-  rgb_matrix_set_color(21, 0, 0, 0);
-  rgb_matrix_set_color(22, 0, 0, 0);
+  rgb_matrix_set_color(19, 255, 0, 0);
+  rgb_matrix_set_color(20, 255, 0, 0);
+  rgb_matrix_set_color(21, 255, 0, 0);
+  rgb_matrix_set_color(22, 255, 0, 0);
 
   rgb_matrix_set_color(31, 255, 0, 0);
   rgb_matrix_set_color(32, 255, 0, 0);
@@ -166,11 +167,17 @@ if(IS_LAYER_ON(_FN)) {
 }
 
 //capslock leds
-  if (host_keyboard_led_state().caps_lock) {
+if (host_keyboard_led_state().caps_lock) {
     rgb_matrix_sethsv_noeeprom(HSV_TEAL);
-    /* rgb_kmatrix_set_color_all(50, 50, 0); */
-  }
+}
 
+}
+void suspend_power_down_user(void) {
+    rgb_matrix_set_suspend_state(true);
+}
+
+void suspend_wakeup_init_user(void) {
+    rgb_matrix_set_suspend_state(false);
 }
 
 // =============================================================================
@@ -235,7 +242,6 @@ uint8_t cur_dance(qk_tap_dance_state_t *state);
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
     case LT(_MS,KC_E):
-        return 225;
     case LT(_VI,KC_D):
         return 225;
     case RCTL_T(KC_ENT):
@@ -243,7 +249,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     case SL_HLP:
         return 150;
     case KC_LSPO:
-        return 127;
     case KC_RSPC:
         return 127;
     case SEMI_:
@@ -276,40 +281,40 @@ bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_BL] = LAYOUT_planck_mit(
-    T_G_TAB, KC_Q,     KC_W,     L_MS_E, KC_R,   KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    RCMD_T(KC_BSPC),
-    T_C_ESC, KC_A,     KC_S,     L_VI_D, KC_F,   KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    TD_SEMI, RCTL_T(KC_QUOT),
-    KC_LSPO, KC_Z,     KC_X,     KC_C,   KC_V,   KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  TD_HELP, KC_RSFT,
-    OS_HYPR, M_GC_ESC, M_GA_SPC, LOWER,  NUMPAD, T_A_SPC,          FN_LAY,  OS_LCAG, KC_DOWN, KC_UP,   SGUI_T(KC_ENT)
+    T_G_TAB, KC_Q,     KC_W,  L_MS_E,   KC_R,   KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    RCMD_T(KC_BSPC),
+    T_C_ESC, KC_A,     KC_S,  L_VI_D,   KC_F,   KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    TD_SEMI, RCTL_T(KC_QUOT),
+    KC_LSPO, KC_Z,     KC_X,  KC_C,     KC_V,   KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  TD_HELP, KC_RSFT,
+    OS_HYPR, M_GC_ESC, LOWER, M_GA_SPC, NUMPAD, T_A_SPC,          FN_LAY,  OS_LCAG, XXXXXXX, XXXXXXX, SGUI_T(KC_ENT)
 ),
 [_VI] = LAYOUT_planck_mit(
     _______, _______, _______, _______, _______, _______, KC_HOME,    KC_PGDN,  KC_PGUP, KC_END,    XXXXXXX,     XXXXXXX,
     _______, KC_LCMD, KC_LALT, _______, KC_LSFT, KC_LEAD, KC_LEFT,    KC_DOWN,  KC_UP,   KC_RIGHT,  KC_F19,      KC_CAPS,
-    XXXXXXX, XXXXXXX, _______, _______, _______, _______, A(KC_BSPC), KC_BSPC,  KC_DEL,  A(KC_DEL), TD(B_F_DEL), _______,
+    _______, M_NUMP,  _______, _______, _______, _______, A(KC_BSPC), KC_BSPC,  KC_DEL,  A(KC_DEL), TD(B_F_DEL), _______,
     _______, _______, _______, _______, _______, _______,             _______,  _______, _______,   _______,     _______
 ),
 [_NL] = LAYOUT_planck_mit(
-    XXXXXXX, XXXXXXX, XXXXXXX, _______,  XXXXXXX, XXXXXXX, XXXXXXX, KC_7,    KC_8,    KC_9,    KC_EQL,  XXXXXXX,
-    _______, KC_LGUI, KC_LALT, _______,  T_SHDOT, XXXXXXX, XXXXXXX, KC_4,    KC_5,    KC_6,    KC_MINS, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    KC_PSLS, XXXXXXX,
-    _______, XXXXXXX, _______, _______,  _______, _______,          KC_0,    _______, XXXXXXX, XXXXXXX, XXXXXXX
+    _______, XXXXXXX, XXXXXXX, _______,  XXXXXXX, XXXXXXX, XXXXXXX, KC_7,    KC_8,    KC_9,    KC_EQL,  _______,
+    _______, KC_LGUI, KC_LALT, _______,  T_SHDOT, XXXXXXX, XXXXXXX, KC_4,    KC_5,    KC_6,    KC_MINS, _______,
+    _______, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    KC_PSLS, XXXXXXX,
+    _______, XXXXXXX, _______, _______,  _______, KC_0,             _______, _______, XXXXXXX, XXXXXXX, XXXXXXX
  ),
  [_MS] = LAYOUT_planck_mit(
     KC_ACL0, KC_ACL2, KC_ACL1, _______, KC_R,    XXXXXXX, KC_WH_L, KC_WH_U,    KC_WH_D, KC_WH_R, XXXXXXX, XXXXXXX,
     _______, KC_A,    KC_S,    XXXXXXX, KC_F,    XXXXXXX, KC_MS_L, KC_MS_D,    KC_MS_U, KC_MS_R, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, C(G(KC_D)), XXXXXXX, KC_BTN2, XXXXXXX, XXXXXXX,
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, C(G(KC_D)), XXXXXXX, KC_BTN2, XXXXXXX, XXXXXXX,
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN1,          XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
  ),
 [_LOWER] = LAYOUT_planck_mit(
-    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   _______, _______, KC_MPLY, _______, _______, _______,
+    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   _______, _______, _______, _______, KC_MPLY, _______,
     KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, _______, _______,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MUTE, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    _______, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX,          XXXXXXX, TG(_MD), XXXXXXX, XXXXXXX, XXXXXXX
+    _______, XXXXXXX, XXXXXXX, _______, XXXXXXX, KC_LALT,          XXXXXXX, TG(_MD), XXXXXXX, XXXXXXX, XXXXXXX
 ),
 [_FN] = LAYOUT_planck_mit(
-    SUSPEND, KC_TILD, KC_GRV,  KC_BSLS, KC_PIPE, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TOG,
-    XXXXXXX, KC_LCBR, KC_LBRC, KC_RBRC, KC_RCBR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,
-    XXXXXXX, KC_UNDS, KC_LPRN, KC_RPRN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    _______, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,          _______, RGB_VAI, RGB_VAD, DEBUG,   RESET
+    SUSPEND, KC_TILD, KC_GRV,  KC_BSLS, KC_PIPE, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DEBUG, RGB_TOG,
+    KC_BRIU, KC_LCBR, KC_LBRC, KC_RBRC, KC_RCBR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,
+    KC_BRID, KC_UNDS, KC_LPRN, KC_RPRN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    _______, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,          _______, _______, RGB_VAI, RGB_VAD,   RESET
 ),
 // NOTE quantum/process_keycode/process_midi.c
 [_MD] = LAYOUT_planck_mit(
@@ -475,17 +480,17 @@ void matrix_scan_user(void) {
         SEQ_TWO_KEYS(KC_S, KC_S) {
             SEND_STRING("Cheers,  :-)" SS_TAP(X_ENT) SS_TAP(X_ENT) "Atanas");
         }
-        // Kamoji section
-        SEQ_TWO_KEYS(KC_K, KC_F) {
-            send_unicode_string("(ノಠ痊ಠ)ノ彡┻━┻");
-        }
-        // Emoticons section
-        SEQ_TWO_KEYS(KC_E, KC_T) {
-            SEND_STRING(SS_LALT("D83D+DC83")); // 💃
-        }
-        SEQ_TWO_KEYS(KC_E, KC_P) {
-            SEND_STRING(SS_LALT("D83D+DCA9")); // 💩
-        }
+        /* // Kamoji section */
+        /* SEQ_TWO_KEYS(KC_K, KC_F) { */
+        /*     send_unicode_string("(ノಠ痊ಠ)ノ彡┻━┻"); */
+        /* } */
+        /* // Emoticons section */
+        /* SEQ_TWO_KEYS(KC_E, KC_T) { */
+        /*     SEND_STRING(SS_LALT("D83D+DC83")); // 💃 */
+        /* } */
+        /* SEQ_TWO_KEYS(KC_E, KC_P) { */
+        /*     SEND_STRING(SS_LALT("D83D+DCA9")); // 💩 */
+        /* } */
     }
 }
 
