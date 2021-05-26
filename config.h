@@ -7,6 +7,8 @@
 #define IGNORE_MOD_TAP_INTERRUPT_PER_KEY
 #define RETRO_TAPPING
 
+#define RETRO_TAPPING_PER_KEY
+
 #define LEADER_PER_KEY_TIMING
 #define LEADER_TIMEOUT 500
 
@@ -19,7 +21,7 @@
 
 #define COMBO_VARIABLE_LEN
 /* #define COMBO_COUNT 13 */
-#define COMBO_TERM 15
+#define COMBO_TERM 30
 // Set the mouse settings to a comfortable speed/accuracy trade-off
 // Assume the screen refresh rate is 60 Hz or higher
 // The default is 50. This makes the mouse ~3 times faster and more accurate

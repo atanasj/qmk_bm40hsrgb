@@ -128,7 +128,7 @@ if(IS_LAYER_ON(_NL)) {
   rgb_matrix_set_color(33, 255, 0, 0);
   rgb_matrix_set_color(34, 255, 0, 0);
 
-  rgb_matrix_set_color(43, 255, 0, 0);
+  rgb_matrix_set_color(42, 255, 0, 0);
 }
 if(IS_LAYER_ON(_MS)) {
   rgb_matrix_set_color(6, 5, 89, 45);
@@ -244,8 +244,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     case LT(_MS,KC_E):
     case LT(_VI,KC_D):
         return 225;
-    case RCTL_T(KC_ENT):
-        return 350;
     case SL_HLP:
         return 150;
     case KC_LSPO:
@@ -253,21 +251,35 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         return 127;
     case SEMI_:
         return 155;
+    case FN_LAY:
+        return 100;
     default:
         return TAPPING_TERM;
     }
 }
 
 // =============================================================================
-// MOD TAP INTERRUP PER KEY SECTION
+// RETRO TAPPING PER KEY SECTION
+// =============================================================================
+
+bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LT(_MS, KC_E):
+        case LT(_VI, KC_D):
+            return true;
+        default:
+            return false;
+    }
+}
+
+// =============================================================================
+// MOD TAP INTERRUPT PER KEY SECTION
 // =============================================================================
 
 bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case ALT_T(KC_SPC):
-            return true;
         case KC_LSPO:
-            return true;
         case KC_RSFT:
             return true;
         default:
@@ -296,7 +308,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, XXXXXXX, XXXXXXX, _______,  XXXXXXX, XXXXXXX, XXXXXXX, KC_7,    KC_8,    KC_9,    KC_EQL,  _______,
     _______, KC_LGUI, KC_LALT, _______,  T_SHDOT, XXXXXXX, XXXXXXX, KC_4,    KC_5,    KC_6,    KC_MINS, _______,
     _______, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    KC_PSLS, XXXXXXX,
-    _______, XXXXXXX, _______, _______,  _______, KC_0,             _______, _______, XXXXXXX, XXXXXXX, XXXXXXX
+    _______, XXXXXXX, _______, _______,  _______, _______,          KC_0,    _______, XXXXXXX, XXXXXXX, XXXXXXX
  ),
  [_MS] = LAYOUT_planck_mit(
     KC_ACL0, KC_ACL2, KC_ACL1, _______, KC_R,    XXXXXXX, KC_WH_L, KC_WH_U,    KC_WH_D, KC_WH_R, XXXXXXX, XXXXXXX,
