@@ -53,7 +53,7 @@
 #    else
 #        define RGBLIGHT_ANIMATIONS
 // #define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
-#        define RGBLIGHT_LIMIT_VAL 10
+// #        define RGBLIGHT_LIMIT_VAL 10
 #    endif
 #endif  // RGBLIGHT_ENABLE
 
