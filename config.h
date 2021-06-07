@@ -4,6 +4,9 @@
 #define TAPPING_TERM 175
 #define TAPPING_TERM_PER_KEY
 
+// #define ONESHOT_TAP_TOGGLE 2  /* Tapping this number of times holds the key until tapped once again. */
+// #define ONESHOT_TIMEOUT 1000  /* Time (in ms) before the one shot key is released */
+
 #define PERMISSIVE_HOLD
 #define IGNORE_MOD_TAP_INTERRUPT_PER_KEY
 
@@ -21,7 +24,7 @@
 // #define MIDI_TONE_KEYCODE_OCTAVES 2
 
 #define COMBO_VARIABLE_LEN
-#define COMBO_COUNT 13
+// #define COMBO_COUNT 13
 #define COMBO_TERM 30
 
 // Set the mouse settings to a comfortable speed/accuracy trade-off
@@ -40,9 +43,9 @@
 
 #define MK_3_SPEED
 #define MK_MOMENTARY_ACCEL
-
 #ifdef RGBLIGHT_ENABLE
 #    define RGBLIGHT_LAYERS
+#    define RGB_DISABLE_WHEN_USB_SUSPENDED true  // turn off effects when suspended
 #    define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF
 #    define RGBLIGHT_SLEEP
 #    if defined(__AVR__) && !defined(__AVR_AT90USB1286__)
@@ -64,8 +67,8 @@
 #ifdef RGB_MATRIX_ENABLE
 
 //--------------------------------------------------------------------------------------------------------
-
-#    define RGB_MATRIX_KEYPRESSES  // reacts to keypresses (will slow down matrix scan by a lot)
+#    define RGB_DISABLE_WHEN_USB_SUSPENDED true  // turn off effects when suspended
+#    define RGB_MATRIX_KEYPRESSES                // reacts to keypresses (will slow down matrix scan by a lot)
 // #   define RGB_MATRIX_KEYRELEASES // reacts to keyreleases (not recommened)
 #    define RGB_MATRIX_FRAMEBUFFER_EFFECTS
 // #   define RGB_DISABLE_AFTER_TIMEOUT 0 // number of ticks to wait until disabling effects

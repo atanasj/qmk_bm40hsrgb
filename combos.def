@@ -28,6 +28,13 @@ COMB(n89Esc,     KC_ESC,          KC_8, KC_9)
 COMB(n79Del,     KC_DEL,          KC_7, KC_9)
 COMB(n56Ent,     KC_ENT,          KC_5, KC_6)
 
+// fn layer combos
+COMB(fVNBspc,    KC_BSPC,         KC_VOLD, KC_MNXT)
+// COMB(n45Tab,     KC_TAB,          KC_VOLD, KC_VOL)
+// COMB(n89Esc,     KC_ESC,          KC_8, KC_9)
+// COMB(n79Del,     KC_DEL,          KC_7, KC_9)
+// COMB(n56Ent,     KC_ENT,          KC_5, KC_6)
+
 /* COMB(woMB5,      KC_MS_BTN5,      KC_W, KC_O) */
 
 // useful function keys
