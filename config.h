@@ -8,6 +8,8 @@
 // #define ONESHOT_TIMEOUT 1000  /* Time (in ms) before the one shot key is released */
 
 #define PERMISSIVE_HOLD
+#define PERMISSIVE_HOLD_PER_KEY
+
 #define IGNORE_MOD_TAP_INTERRUPT_PER_KEY
 
 #define RETRO_TAPPING
@@ -19,13 +21,15 @@
 // Limits the max. amount of layers to 8 to save firmware memory.
 #define LAYER_STATE_8BIT
 
+#ifdef MIDI_ENABLE
 // override number of MIDI tone keycodes (each octave adds 12 keycodes and allocates 12 bytes)
 #define MIDI_ADVANCED
 // #define MIDI_TONE_KEYCODE_OCTAVES 2
+#endif
 
 #define COMBO_VARIABLE_LEN
 // #define COMBO_COUNT 13
-#define COMBO_TERM 30
+#define COMBO_TERM 20
 
 // Set the mouse settings to a comfortable speed/accuracy trade-off
 // Assume the screen refresh rate is 60 Hz or higher
@@ -43,6 +47,7 @@
 
 #define MK_3_SPEED
 #define MK_MOMENTARY_ACCEL
+
 #ifdef RGBLIGHT_ENABLE
 #    define RGBLIGHT_LAYERS
 #    define RGB_DISABLE_WHEN_USB_SUSPENDED true  // turn off effects when suspended
@@ -67,7 +72,6 @@
 #ifdef RGB_MATRIX_ENABLE
 
 //--------------------------------------------------------------------------------------------------------
-#    define RGB_DISABLE_WHEN_USB_SUSPENDED true  // turn off effects when suspended
 #    define RGB_MATRIX_KEYPRESSES                // reacts to keypresses (will slow down matrix scan by a lot)
 // #   define RGB_MATRIX_KEYRELEASES // reacts to keyreleases (not recommened)
 #    define RGB_MATRIX_FRAMEBUFFER_EFFECTS
