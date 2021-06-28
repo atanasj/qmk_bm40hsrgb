@@ -14,6 +14,8 @@ COMB(jlBspc,     KC_BSPC,         SFT_J, ALT_L)
 COMB(jkTab,      KC_TAB,          SFT_J, CTL_K)
 COMB(klEnt,      KC_ENT,          CTL_K, ALT_L)
 COMB(ioEsc,      KC_ESC,          CTL_D, SFT_F)
+COMB(msEsc,      KC_ESC,          KC_ACL2, KC_ACL1)
+
 // COMB(uoDel,      KC_DEL,          KC_U, KC_O)
 /* COMB(dfMute,     KC_MUTE,         KC_D, KC_F) */
 /* COMB(asPlay,     KC_MPLY,         KC_A, KC_S) */
