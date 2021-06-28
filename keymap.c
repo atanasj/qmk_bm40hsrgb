@@ -29,6 +29,7 @@ enum planck_layers {
 };
 
 #include "keymap_combo.h"
+#include "action_tapping.h" // necessary for action_tapping_process
 
 // =============================================================================
 // KEY DEF SECTION
@@ -75,7 +76,7 @@ enum planck_layers {
 #define SFT_F LSFT_T(KC_F)
 
 #define GUI_SCLN RGUI_T(KC_SCLN)
-#define ALT_L RALT_T(KC_L)
+#define ALT_L LALT_T(KC_L)
 #define CTL_K RCTL_T(KC_K)
 #define SFT_J RSFT_T(KC_J)
 
@@ -328,6 +329,14 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     case LT(_MS,KC_E):
     case LT(_VI,KC_D):
     case NUMPAD:
+    case SFT_F:
+    case SFT_J:
+    case CTL_D:
+    case CTL_K:
+    case ALT_S:
+    case ALT_L:
+    case GUI_A:
+    case GUI_SCLN:
         return 225;
     case SL_HLP:
         return 150;
@@ -352,6 +361,14 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT(_MS, KC_E):
         case LT(_VI, KC_D):
+        case SFT_F:
+        case SFT_J:
+        case CTL_D:
+        case CTL_K:
+        case ALT_S:
+        case ALT_L:
+        case GUI_A:
+        case GUI_SCLN:
             return true;
         default:
             return false;
@@ -366,6 +383,14 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT(_MS, KC_E):
         case LT(_VI, KC_D):
+        case SFT_F:
+        case SFT_J:
+        case CTL_D:
+        case CTL_K:
+        case ALT_S:
+        case ALT_L:
+        case GUI_A:
+        case GUI_SCLN:
             return true;
         default:
             return false;
@@ -381,6 +406,14 @@ bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
         case ALT_T(KC_SPC):
         case KC_LSPO:
         case KC_RSFT:
+        case SFT_F:
+        case SFT_J:
+        case CTL_D:
+        case CTL_K:
+        case ALT_S:
+        case ALT_L:
+        case GUI_A:
+        case GUI_SCLN:
             return true;
         default:
             return false;
@@ -396,7 +429,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_Q,   KC_W,    KC_E,   KC_R,   KC_T,   T_G_TAB, T_G_BSP, KC_Y,   KC_U,   KC_I,    KC_O,    KC_P,
     GUI_A,  ALT_S,   CTL_D,  SFT_F,  KC_G,   T_C_ESC, T_C_QUO, KC_H,   SFT_J,  CTL_K,   ALT_L,   GUI_SCLN,
     KC_Z,   KC_X,    KC_C,   KC_V,   KC_B,   KC_LSPO, KC_RSPC, KC_N,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH,
-    KC_ESC, XXXXXXX, LOWER2, NM_TAB, VI_ENT, XXXXXXX,          MS_SPC, FN_BSP, XXXXXXX, RESET,   KC_ENT
+    KC_ESC, XXXXXXX, MO(LOWER), NUMPAD, MO(_VI), XXXXXXX,          MS_SPC, MO(_FN), XXXXXXX, RESET,   KC_ENT
 ),
 // [_SL] = LAYOUT_planck_mit(
 //     T_G_TAB, KC_Q,     KC_W,  L_MS_E,   KC_R,   KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    T_G_BSP,

@@ -1,9 +1,19 @@
+// split layout
+#define GUI_A LGUI_T(KC_A)
+#define ALT_S LALT_T(KC_S)
+#define CTL_D LCTL_T(KC_D)
+#define SFT_F LSFT_T(KC_F)
+
+#define GUI_SCLN RGUI_T(KC_SCLN)
+#define ALT_L LALT_T(KC_L)
+#define CTL_K RCTL_T(KC_K)
+#define SFT_J RSFT_T(KC_J)
+
 // base-layer combos
-COMB(jlBspc,     KC_BSPC,         KC_U, KC_O)
-COMB(jkTab,      KC_TAB,          KC_U, KC_I)
-COMB(klEnt,      KC_ENT,          KC_I, KC_O)
-COMB(tyHypr,     HYPR(KC_Y),      KC_T, KC_Y)
-COMB(ioEsc,      KC_ESC,          KC_E, KC_R)
+COMB(jlBspc,     KC_BSPC,         SFT_J, ALT_L)
+COMB(jkTab,      KC_TAB,          SFT_J, CTL_K)
+COMB(klEnt,      KC_ENT,          CTL_K, ALT_L)
+COMB(ioEsc,      KC_ESC,          CTL_D, SFT_F)
 // COMB(uoDel,      KC_DEL,          KC_U, KC_O)
 /* COMB(dfMute,     KC_MUTE,         KC_D, KC_F) */
 /* COMB(asPlay,     KC_MPLY,         KC_A, KC_S) */
@@ -27,18 +37,18 @@ COMB(n56Ent,     KC_ENT,          KC_5, KC_6)
 /* COMB(woMB5,      KC_MS_BTN5,      KC_W, KC_O) */
 
 // useful function keys
-COMB(fmF1,       KC_F1,           KC_F, KC_M)
-COMB(fcommF2,    KC_F2,           KC_F, KC_COMM)
-COMB(fdotF3,     KC_F2,           KC_F, KC_DOT)
-COMB(fjF4,       KC_F4,           KC_F, KC_J)
-COMB(fkF5,       KC_F5,           KC_F, KC_K)
-COMB(flF6,       KC_F6,           KC_F, KC_L)
-COMB(fuF7,       KC_F7,           KC_F, KC_U)
-COMB(fiF8,       KC_F8,           KC_F, KC_I)
-COMB(foF9,       KC_F9,           KC_F, KC_O)
-COMB(fyF10,      KC_F10,          KC_F, KC_Y)
-COMB(fhF11,      KC_F11,          KC_F, KC_H)
-COMB(fnF12,      KC_F12,          KC_F, KC_N)
+COMB(fmF1,       KC_F1,           SFT_F, KC_M)
+COMB(fcommF2,    KC_F2,           SFT_F, KC_COMM)
+COMB(fdotF3,     KC_F2,           SFT_F, KC_DOT)
+COMB(fjF4,       KC_F4,           SFT_F, SFT_J)
+COMB(fkF5,       KC_F5,           SFT_F, CTL_K)
+COMB(flF6,       KC_F6,           SFT_F, ALT_L)
+COMB(fuF7,       KC_F7,           SFT_F, KC_U)
+COMB(fiF8,       KC_F8,           SFT_F, KC_I)
+COMB(foF9,       KC_F9,           SFT_F, KC_O)
+COMB(fyF10,      KC_F10,          SFT_F, KC_Y)
+COMB(fhF11,      KC_F11,          SFT_F, KC_H)
+COMB(fnF12,      KC_F12,          SFT_F, KC_N)
 
 // COMB(leftMETA,   C(A(KC_LGUI)),   KC_W, KC_F)
 // COMB(rightMETA,  C(A(KC_LGUI)),   KC_J, KC_O)
