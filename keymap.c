@@ -19,7 +19,7 @@
 
 enum planck_layers {
   _BL,
-  _SL,
+  // _SL,
   _NL,
   _VI,
   _MS,
@@ -60,12 +60,31 @@ enum planck_layers {
 #define T_SG_EN SGUI_T(KC_ENT)
 
 #define TD_SEMI TD(SEMI_)
+#define TD_VID TD(VID_)
 #define TD_HELP TD(SL_HLP)
 #define T_SHDOT LSFT_T(KC_PDOT)
 
 #define DW_BKWD A(KC_BSPC)
 #define DW_FRWD A(KC_DEL)
 #define TD_DEL TD(B_F_DEL)
+
+// split layout
+#define GUI_A LGUI_T(KC_A)
+#define ALT_S LALT_T(KC_S)
+#define CTL_D LCTL_T(KC_D)
+#define SFT_F LSFT_T(KC_F)
+
+#define GUI_SCLN RGUI_T(KC_SCLN)
+#define ALT_L RALT_T(KC_L)
+#define CTL_K RCTL_T(KC_K)
+#define SFT_J RSFT_T(KC_J)
+
+#define MS_SPC LT(_MS, KC_SPC)
+#define VI_ENT LT(_VI, KC_ENT)
+#define NM_TAB LT(_NL, KC_TAB)
+
+#define FN_BSP LT(_FN, KC_BSPC)
+#define LOWER2 MO(_LOWER)
 
 // =============================================================================
 // LED SECTION
@@ -85,66 +104,66 @@ void rgb_matrix_indicators_user(void) {
                 rgb_matrix_set_color_all(RGB_RED);
             }
             break;
-        case _SL:
-            if (host_keyboard_leds() & (1 << USB_LED_CAPS_LOCK)) {
-                // rgb_matrix_set_color_all(RGB_RED);
-                rgb_matrix_set_color(0, RGB_RED);
-                rgb_matrix_set_color(1, RGB_RED);
-                rgb_matrix_set_color(2, RGB_RED);
-                rgb_matrix_set_color(3, RGB_RED);
-                rgb_matrix_set_color(4, RGB_RED);
-                rgb_matrix_set_color(5, RGB_RED);
+        // case _SL:
+        //     if (host_keyboard_leds() & (1 << USB_LED_CAPS_LOCK)) {
+        //         // rgb_matrix_set_color_all(RGB_RED);
+        //         rgb_matrix_set_color(0, RGB_RED);
+        //         rgb_matrix_set_color(1, RGB_RED);
+        //         rgb_matrix_set_color(2, RGB_RED);
+        //         rgb_matrix_set_color(3, RGB_RED);
+        //         rgb_matrix_set_color(4, RGB_RED);
+        //         rgb_matrix_set_color(5, RGB_RED);
 
-                rgb_matrix_set_color(6, RGB_MAGENTA);
-                rgb_matrix_set_color(7, RGB_MAGENTA);
-                rgb_matrix_set_color(8, RGB_MAGENTA);
-                rgb_matrix_set_color(9, RGB_MAGENTA);
-                rgb_matrix_set_color(10, RGB_MAGENTA);
-                rgb_matrix_set_color(11, RGB_MAGENTA);
+        //         rgb_matrix_set_color(6, RGB_MAGENTA);
+        //         rgb_matrix_set_color(7, RGB_MAGENTA);
+        //         rgb_matrix_set_color(8, RGB_MAGENTA);
+        //         rgb_matrix_set_color(9, RGB_MAGENTA);
+        //         rgb_matrix_set_color(10, RGB_MAGENTA);
+        //         rgb_matrix_set_color(11, RGB_MAGENTA);
 
-                rgb_matrix_set_color(12, RGB_RED);
-                rgb_matrix_set_color(13, RGB_RED);
-                rgb_matrix_set_color(14, RGB_RED);
-                rgb_matrix_set_color(15, RGB_RED);
-                rgb_matrix_set_color(16, RGB_RED);
-                rgb_matrix_set_color(17, RGB_RED);
+        //         rgb_matrix_set_color(12, RGB_RED);
+        //         rgb_matrix_set_color(13, RGB_RED);
+        //         rgb_matrix_set_color(14, RGB_RED);
+        //         rgb_matrix_set_color(15, RGB_RED);
+        //         rgb_matrix_set_color(16, RGB_RED);
+        //         rgb_matrix_set_color(17, RGB_RED);
 
-                rgb_matrix_set_color(18, RGB_MAGENTA);
-                rgb_matrix_set_color(19, RGB_MAGENTA);
-                rgb_matrix_set_color(20, RGB_MAGENTA);
-                rgb_matrix_set_color(21, RGB_MAGENTA);
-                rgb_matrix_set_color(22, RGB_MAGENTA);
-                rgb_matrix_set_color(23, RGB_MAGENTA);
+        //         rgb_matrix_set_color(18, RGB_MAGENTA);
+        //         rgb_matrix_set_color(19, RGB_MAGENTA);
+        //         rgb_matrix_set_color(20, RGB_MAGENTA);
+        //         rgb_matrix_set_color(21, RGB_MAGENTA);
+        //         rgb_matrix_set_color(22, RGB_MAGENTA);
+        //         rgb_matrix_set_color(23, RGB_MAGENTA);
 
-                // media controls
-                rgb_matrix_set_color(24, RGB_RED);
-                rgb_matrix_set_color(25, RGB_RED);
-                rgb_matrix_set_color(26, RGB_RED);
-                rgb_matrix_set_color(27, RGB_RED);
-                rgb_matrix_set_color(28, RGB_RED);
-                rgb_matrix_set_color(29, RGB_RED);
+        //         // media controls
+        //         rgb_matrix_set_color(24, RGB_RED);
+        //         rgb_matrix_set_color(25, RGB_RED);
+        //         rgb_matrix_set_color(26, RGB_RED);
+        //         rgb_matrix_set_color(27, RGB_RED);
+        //         rgb_matrix_set_color(28, RGB_RED);
+        //         rgb_matrix_set_color(29, RGB_RED);
 
-                rgb_matrix_set_color(30, RGB_MAGENTA);
-                rgb_matrix_set_color(31, RGB_MAGENTA);
-                rgb_matrix_set_color(32, RGB_MAGENTA);
-                rgb_matrix_set_color(33, RGB_MAGENTA);
-                rgb_matrix_set_color(34, RGB_MAGENTA);
-                rgb_matrix_set_color(35, RGB_MAGENTA);
+        //         rgb_matrix_set_color(30, RGB_MAGENTA);
+        //         rgb_matrix_set_color(31, RGB_MAGENTA);
+        //         rgb_matrix_set_color(32, RGB_MAGENTA);
+        //         rgb_matrix_set_color(33, RGB_MAGENTA);
+        //         rgb_matrix_set_color(34, RGB_MAGENTA);
+        //         rgb_matrix_set_color(35, RGB_MAGENTA);
 
-                rgb_matrix_set_color(36, RGB_RED);
-                rgb_matrix_set_color(37, RGB_RED);
-                rgb_matrix_set_color(38, RGB_RED);
-                rgb_matrix_set_color(39, RGB_RED);
-                rgb_matrix_set_color(40, RGB_RED);
+        //         rgb_matrix_set_color(36, RGB_RED);
+        //         rgb_matrix_set_color(37, RGB_RED);
+        //         rgb_matrix_set_color(38, RGB_RED);
+        //         rgb_matrix_set_color(39, RGB_RED);
+        //         rgb_matrix_set_color(40, RGB_RED);
 
-                rgb_matrix_set_color(42, RGB_MAGENTA);
-                rgb_matrix_set_color(43, RGB_MAGENTA);
-                rgb_matrix_set_color(44, RGB_MAGENTA);
-                rgb_matrix_set_color(45, RGB_MAGENTA);
-                rgb_matrix_set_color(46, RGB_MAGENTA);
-            }
-            else rgb_matrix_set_color_all(RGB_MAGENTA);
-            break;
+        //         rgb_matrix_set_color(42, RGB_MAGENTA);
+        //         rgb_matrix_set_color(43, RGB_MAGENTA);
+        //         rgb_matrix_set_color(44, RGB_MAGENTA);
+        //         rgb_matrix_set_color(45, RGB_MAGENTA);
+        //         rgb_matrix_set_color(46, RGB_MAGENTA);
+        //     }
+        //     else rgb_matrix_set_color_all(RGB_MAGENTA);
+        //     break;
         case _LOWER:
             // function keys
             rgb_matrix_set_color(0, 20, 88, 99);
@@ -254,9 +273,9 @@ enum macros { SUSPEND = SAFE_RANGE };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case KC_RSFT:
-            perform_space_cadet(record, KC_RSPC, KC_RSFT, KC_RSFT, KC_0);
-            return false;
+        // case KC_RSFT:
+        //     perform_space_cadet(record, KC_RSPC, KC_RSFT, KC_RSFT, KC_0);
+        //     return false;
         case SUSPEND:
             if (record->event.pressed) {
                 if (is_led_on) {
@@ -294,6 +313,7 @@ enum {
 enum {
     SL_HLP,
     SEMI_,
+    VID_,
     B_F_DEL
 };
 
@@ -315,6 +335,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     case KC_RSPC:
         return 90;
     case SEMI_:
+    case VID_:
         return 155;
     case FN_LAY:
         return 35;
@@ -372,46 +393,46 @@ bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_BL] = LAYOUT_planck_mit(
-    T_G_TAB, KC_Q,     KC_W,  L_MS_E,   KC_R,   KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    T_G_BSP,
-    T_C_ESC, KC_A,     KC_S,  L_VI_D,   KC_F,   KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, T_C_QUO,
-    KC_LSPO, KC_Z,     KC_X,  KC_C,     KC_V,   KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-    OS_HYPR, M_GC_ESC, LOWER, M_GA_SPC, NUMPAD, T_A_SPC,          FN_LAY,  OS_LCAG, XXXXXXX, XXXXXXX, T_SG_EN
+    KC_Q,   KC_W,    KC_E,   KC_R,   KC_T,   T_G_TAB, T_G_BSP, KC_Y,   KC_U,   KC_I,    KC_O,    KC_P,
+    GUI_A,  ALT_S,   CTL_D,  SFT_F,  KC_G,   T_C_ESC, T_C_QUO, KC_H,   SFT_J,  CTL_K,   ALT_L,   GUI_SCLN,
+    KC_Z,   KC_X,    KC_C,   KC_V,   KC_B,   KC_LSPO, KC_RSPC, KC_N,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH,
+    KC_ESC, XXXXXXX, LOWER2, NM_TAB, VI_ENT, XXXXXXX,          MS_SPC, FN_BSP, XXXXXXX, RESET,   KC_ENT
 ),
-[_SL] = LAYOUT_planck_mit(
-    T_G_TAB, KC_Q,     KC_W,  L_MS_E,   KC_R,   KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    T_G_BSP,
-    T_C_ESC, KC_A,     KC_S,  L_VI_D,   KC_F,   KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, T_C_QUO,
-    KC_LSPO, KC_Z,     KC_X,  KC_C,     KC_V,   KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-    OS_HYPR, M_GC_ESC, LOWER, M_GA_SPC, NUMPAD, KC_UNDS,          FN_LAY,  OS_LCAG, XXXXXXX, XXXXXXX, T_SG_EN
-),
+// [_SL] = LAYOUT_planck_mit(
+//     T_G_TAB, KC_Q,     KC_W,  L_MS_E,   KC_R,   KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    T_G_BSP,
+//     T_C_ESC, KC_A,     KC_S,  L_VI_D,   KC_F,   KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, T_C_QUO,
+//     KC_LSPO, KC_Z,     KC_X,  KC_C,     KC_V,   KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+//     OS_HYPR, M_GC_ESC, LOWER, M_GA_SPC, NUMPAD, KC_UNDS,          FN_LAY,  OS_LCAG, XXXXXXX, XXXXXXX, T_SG_EN
+// ),
 [_NL] = LAYOUT_planck_mit(
-    _______, XXXXXXX, XXXXXXX, _______,  XXXXXXX, XXXXXXX, XXXXXXX, KC_7,    KC_8,    KC_9,    KC_EQL,  _______,
-    _______, KC_LGUI, KC_LALT, _______,  T_SHDOT, XXXXXXX,  XXXXXXX, KC_4,    KC_5,    KC_6,    KC_MINS, _______,
-    _______, XXXXXXX, XXXXXXX, XXXXXXX,  T_NUMB,  XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    KC_PSLS, XXXXXXX,
-    _______, XXXXXXX, _______, _______,  _______, KC_0,             KC_SPC,  _______, XXXXXXX, XXXXXXX, _______
+    XXXXXXX, XXXXXXX, _______, XXXXXXX, _______, XXXXXXX, XXXXXXX, _______, KC_7,    KC_8,    KC_9,    KC_EQL,
+    KC_LGUI, KC_LALT, KC_LCTL, T_SHDOT, _______, XXXXXXX, XXXXXXX, _______, KC_4,    KC_5,    KC_6,    KC_MINS,
+    XXXXXXX, XXXXXXX, XXXXXXX, T_NUMB,  _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    KC_PSLS,
+    XXXXXXX, _______, _______, _______, _______, _______,          KC_0,    _______, XXXXXXX, XXXXXXX, XXXXXXX
  ),
 [_VI] = LAYOUT_planck_mit(
-    _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN,  KC_PGUP, KC_END,   XXXXXXX, T_SNAK,
-    _______, KC_LCMD, KC_LALT, _______, KC_LSFT, KC_LEAD, KC_LEFT, KC_DOWN,  KC_UP,   KC_RIGHT, KC_F19,  KC_CAPS,
-    _______, _______, _______, _______, T_VIL,   _______, DW_BKWD, KC_BSPC,  KC_DEL,  DW_FRWD,  TD_DEL,  _______,
-    _______, _______, _______, _______, _______, _______,          _______,  _______, _______,  _______, _______
+    _______, _______, _______, _______, _______, _______, XXXXXXX, KC_HOME, KC_PGDN,  KC_PGUP, KC_END,   XXXXXXX,
+    KC_LCMD, KC_LALT, KC_LCTL, KC_LSFT, KC_LEAD, _______, KC_CAPS, KC_LEFT, KC_DOWN,  KC_UP,   KC_RIGHT, KC_F19,
+    _______, _______, _______, T_VIL,   _______, _______, _______, DW_BKWD, KC_BSPC,  KC_DEL,  DW_FRWD,  TD_DEL,
+    _______, _______, _______, _______, _______, _______,          _______, _______,  _______, _______,  _______
 ),
  [_MS] = LAYOUT_planck_mit(
-    KC_ACL0, KC_ACL2, KC_ACL1, _______, KC_R,    XXXXXXX, KC_WH_L, KC_WH_U,    KC_WH_D, KC_WH_R, XXXXXXX, XXXXXXX,
-    _______, KC_A,    KC_S,    XXXXXXX, KC_F,    XXXXXXX, KC_MS_L, KC_MS_D,    KC_MS_U, KC_MS_R, XXXXXXX, XXXXXXX,
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, T_MSL,   XXXXXXX, XXXXXXX, C(G(KC_D)), XXXXXXX, KC_BTN2, XXXXXXX, XXXXXXX,
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN1,          XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, _______
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_WH_L, KC_WH_U,    KC_WH_D, KC_WH_R, XXXXXXX,
+    XXXXXXX, KC_ACL0, KC_ACL2, KC_ACL1, XXXXXXX, XXXXXXX, XXXXXXX, KC_MS_L, KC_MS_D,    KC_MS_U, KC_MS_R, XXXXXXX,
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, T_MSL,   XXXXXXX, XXXXXXX, XXXXXXX, C(G(KC_D)), XXXXXXX, KC_BTN2, XXXXXXX,
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN1, XXXXXXX, _______,          XXXXXXX,    XXXXXXX, XXXXXXX, _______
  ),
 [_LOWER] = LAYOUT_planck_mit(
-    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   _______, _______, _______, _______, KC_MPLY, _______,
-    KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, _______, _______,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MUTE, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    _______, XXXXXXX, _______, XXXXXXX, XXXXXXX, KC_LALT,          XXXXXXX, TG(_MD), XXXXXXX, XXXXXXX, _______
+    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   _______, _______, _______, _______, _______, KC_MPLY,
+    KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, _______,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MUTE, XXXXXXX, XXXXXXX, XXXXXXX,
+    _______, XXXXXXX, _______, XXXXXXX, XXXXXXX, KC_LALT,          _______, XXXXXXX, TG(_MD), XXXXXXX, XXXXXXX
 ),
 [_FN] = LAYOUT_planck_mit(
-    SUSPEND, KC_TILD, KC_GRV,  KC_BSLS, KC_PIPE, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DEBUG,   RGB_TOG,
-    KC_BRIU, KC_LCBR, KC_LBRC, KC_RBRC, KC_RCBR, XXXXXXX, XXXXXXX, KC_LGUI, XXXXXXX, KC_BSPC, _______, XXXXXXX,
-    KC_BRID, KC_UNDS, KC_LPRN, KC_RPRN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LSFT,
-    _______, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,          _______, XXXXXXX, RGB_VAI, RGB_VAD, RESET
+    KC_TILD, KC_GRV,  KC_BSLS, KC_PIPE, XXXXXXX, SUSPEND, RGB_TOG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DEBUG,
+    KC_LCBR, KC_LBRC, KC_RBRC, KC_RCBR, XXXXXXX, KC_BRIU, XXXXXXX, XXXXXXX, KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI,
+    KC_UNDS, KC_LPRN, KC_RPRN, XXXXXXX, XXXXXXX, KC_BRID, KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, _______, RESET,          _______, XXXXXXX, RGB_VAI, RGB_VAD
 ),
 // NOTE quantum/process_keycode/process_midi.c
 [_MD] = LAYOUT_planck_mit(
@@ -471,6 +492,40 @@ void help_reset(qk_tap_dance_state_t *state, void *user_data) {
         unregister_code(KC_SLSH);
     }
     help_tap_state.state = 0;
+}
+
+// Create an instance of 'tap' for the 'x' tap dance.
+static tap vid_tap_state = {
+    .is_press_action = true,
+    .state = 0
+};
+
+void vid_finished(qk_tap_dance_state_t *state, void *user_data) {
+    vid_tap_state.state = cur_dance(state);
+    switch (vid_tap_state.state) {
+    case SINGLE_TAP:
+        register_code(KC_D);
+        break;
+    case SINGLE_HOLD:
+        layer_on(_VI);
+        break;
+    case DOUBLE_HOLD:
+        register_code(KC_LCTL);
+    }
+}
+
+void vid_reset(qk_tap_dance_state_t *state, void *user_data) {
+    switch (vid_tap_state.state) {
+    case SINGLE_TAP:
+        unregister_code(KC_D);
+        break;
+    case SINGLE_HOLD:
+        layer_off(_VI);
+        break;
+    case DOUBLE_HOLD:
+        unregister_code(KC_LCTL);
+    }
+    vid_tap_state.state = 0;
 }
 
 // Create an instance of 'tap' for the 'x' tap dance.
@@ -544,6 +599,7 @@ void bfdel_reset(qk_tap_dance_state_t *state, void *user_data) {
 qk_tap_dance_action_t tap_dance_actions[] = {
     [SL_HLP] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, help_finished, help_reset),
     [SEMI_]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, semi_finished, semi_reset),
+    [VID_]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, vid_finished, semi_reset),
     [B_F_DEL]  = ACTION_TAP_DANCE_FN_ADVANCED(NULL, bfdel_finished, bfdel_reset)
 };
 
