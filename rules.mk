@@ -3,7 +3,7 @@ SRC += muse.c
 ifneq ($(strip $(NO_SECRETS)), yes)
     # NOTE needs to be in users for below line to work
     # ifneq ("$(wildcard $(USER_PATH)/secrets.c)","")
-    ifneq ("$(wildcard keyboards/bm40rgbhs/keymaps/atanas/secrets.c)","")
+    ifneq ("$(wildcard keyboards/bm40hsrgb/keymaps/atanas/secrets.c)","")
         SRC += secrets.c
     endif
 endif
