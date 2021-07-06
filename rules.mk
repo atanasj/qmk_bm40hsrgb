@@ -1,15 +1,23 @@
+SRC += muse.c
+
+ifneq ($(strip $(NO_SECRETS)), yes)
+    # NOTE needs to be in users for below line to work
+    # ifneq ("$(wildcard $(USER_PATH)/secrets.c)","")
+    ifneq ("$(wildcard keyboards/bm40rgbhs/keymaps/atanas/secrets.c)","")
+        SRC += secrets.c
+    endif
+endif
+
 COMMAND_ENABLE = no
 CONSOLE_ENABLE = no
-LTO_ENABLE = yes				# reduces files size dramatically
+LTO_ENABLE = yes				# yes for bm40rgbhs
 
-VPATH  +=  keyboards/bm40hsrgb/keymaps/atanas/combos/
+VPATH  += keyboards/planck/keymaps/atanasj/combos/
 
 COMBO_ENABLE = yes
-MOUSEKEY_ENABLE = yes
 TAP_DANCE_ENABLE = yes
 LEADER_ENABLE = yes
-EXTRAKEY_ENABLE = yes # Audio control and System control
-UNICODE_ENABLE = yes
+UNICODE_ENABLE = no
 NKRO_ENABLE = yes
-# AUDIO_ENABLE = yes
+AUDIO_ENABLE = no				# no for bm40rgbhs
 MIDI_ENABLE = no
