@@ -10,4 +10,4 @@ EXTRAKEY_ENABLE = yes # Audio control and System control
 UNICODE_ENABLE = yes
 NKRO_ENABLE = yes
 # AUDIO_ENABLE = yes
-MIDI_ENABLE = yes
+MIDI_ENABLE = no
