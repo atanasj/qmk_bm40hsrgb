@@ -1,3 +1,7 @@
+// get key definitions here
+
+#include "keymap.h"
+
 // Keymap helpers
 
 #define K_ENUM(name, key, ...) name,
@@ -28,6 +32,10 @@
 #define TOGG A_ENUM
 enum combos {
 #include "combos.def"
+#include "func.def"
+#include "media.def"
+#include "oneshot.def"
+#include "togg.def"
 };
 
 // Bake combos into mem
@@ -38,6 +46,10 @@ enum combos {
 #define SUBS A_DATA
 #define TOGG A_DATA
 #include "combos.def"
+#include "func.def"
+#include "media.def"
+#include "oneshot.def"
+#include "togg.def"
 #undef COMB
 #undef SUBS
 #undef TOGG
@@ -48,6 +60,10 @@ enum combos {
 #define TOGG A_COMB
 combo_t key_combos[] = {
 #include "combos.def"
+#include "func.def"
+#include "media.def"
+#include "oneshot.def"
+#include "togg.def"
 };
 #undef COMB
 #undef SUBS
@@ -63,6 +79,10 @@ int COMBO_LEN = sizeof(key_combos) / sizeof(key_combos[0]);
 void process_combo_event(uint16_t combo_index, bool pressed) {
     switch (combo_index) {
 #include "combos.def"
+#include "func.def"
+#include "media.def"
+#include "oneshot.def"
+#include "togg.def"
     }
 
     // Allow user overrides per keymap

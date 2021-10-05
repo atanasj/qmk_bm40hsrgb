@@ -3,19 +3,32 @@
 #undef TAPPING_TERM
 #define TAPPING_TERM 175
 #define TAPPING_TERM_PER_KEY
+
+#define TAPPING_FORCE_HOLD
+
 #define PERMISSIVE_HOLD
+#define PERMISSIVE_HOLD_PER_KEY
+
 #define IGNORE_MOD_TAP_INTERRUPT_PER_KEY
+
 #define RETRO_TAPPING
+#define RETRO_TAPPING_PER_KEY
 
 #define LEADER_PER_KEY_TIMING
 #define LEADER_TIMEOUT 500
 
+#define MACRO_TIMER 5
+
 // Limits the max. amount of layers to 8 to save firmware memory.
-#define LAYER_STATE_8BIT
+/* #define LAYER_STATE_8BIT */
+
+// #define MIDI_ADVANCED
+/* override number of MIDI tone keycodes (each octave adds 12 keycodes and allocates 12 bytes) */
+/* #define MIDI_TONE_KEYCODE_OCTAVES 2 */
 
 #define COMBO_VARIABLE_LEN
 /* #define COMBO_COUNT 13 */
-#define COMBO_TERM 15
+#define COMBO_TERM 20
 // Set the mouse settings to a comfortable speed/accuracy trade-off
 // Assume the screen refresh rate is 60 Hz or higher
 // The default is 50. This makes the mouse ~3 times faster and more accurate
@@ -39,7 +52,7 @@
 #define RGBLIGHT_ANIMATIONS
 
 //#define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
-#define RGBLIGHT_LIMIT_VAL 10
+// #define RGBLIGHT_LIMIT_VAL 10
 
 //bootmagic
 #define BOOTMAGIC_KEY_SALT KC_V
