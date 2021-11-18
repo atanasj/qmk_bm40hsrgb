@@ -97,7 +97,7 @@ enum macros {
 // #define T_A_UND MT(MOD_LALT,KC_MIN)
 
 #define T_G_BSP RCMD_T(KC_BSPC)
-#define T_C_QUO RCTL_T(KC_QUOT)
+#define T_C_QUO LCTL_T(KC_QUOT)
 #define T_SG_EN SGUI_T(KC_ENT)
 
 #define TD_SEMI TD(SEMI_)

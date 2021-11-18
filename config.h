@@ -28,6 +28,7 @@
 
 #define COMBO_VARIABLE_LEN
 /* #define COMBO_COUNT 13 */
+#undef COMBO_TERM
 #define COMBO_TERM 20
 // Set the mouse settings to a comfortable speed/accuracy trade-off
 // Assume the screen refresh rate is 60 Hz or higher
@@ -52,7 +53,8 @@
 #define RGBLIGHT_ANIMATIONS
 
 //#define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
-// #define RGBLIGHT_LIMIT_VAL 10
+#undef RGBLIGHT_LIMIT_VAL
+#define RGBLIGHT_LIMIT_VAL 50
 
 //bootmagic
 #define BOOTMAGIC_KEY_SALT KC_V
