@@ -279,11 +279,11 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     case L_MS_E:
     case L_VI_D:
     case WIND_W:
+    case NUMPAD:
         return 225;
     case SL_HLP:
         return 150;
     case KC_LSPO:
-    case NUMPAD:
     case KC_RSPC:
         return 115;
     case SEMI_:
@@ -304,6 +304,7 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
         case L_MS_E:
         case L_VI_D:
         case WIND_W:
+        case NUMPAD:
             return true;
         default:
             return false;
@@ -319,6 +320,7 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
         case L_MS_E:
         case L_VI_D:
         case WIND_W:
+        case NUMPAD:
             return true;
         default:
             return false;
