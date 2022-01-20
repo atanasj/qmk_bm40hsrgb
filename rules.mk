@@ -1,7 +1,11 @@
 SRC += muse.c
 
 LTO_ENABLE = yes				# reduces files size dramatically
-BOOTMAGIC_ENABLE = lite
+CONSOLE_ENABLE = no
+COMMAND_ENABLE = no
+GRAVE_ESC_ENABLE = no
+MAGIC_ENABLE = no
+BOOTMAGIC_ENABLE = yes
 # keep path to combos local to my keymap
 
 VPATH  +=  keyboards/kprepublic/bm40hsrgb/keymaps/atanasj/combos/

@@ -304,7 +304,6 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
         case L_MS_E:
         case L_VI_D:
         case WIND_W:
-        case NUMPAD:
             return true;
         default:
             return false;
@@ -323,6 +322,24 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
         case NUMPAD:
             return true;
         default:
+            return false;
+    }
+}
+
+// =============================================================================
+// MOD TAP INTERRUP PER KEY SECTION
+// =============================================================================
+// NOTE this is experimental, review it's use
+bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        // case T_A_SPC:
+        case KC_LSPO:
+        case KC_RSFT:
+        case NUMPAD:
+            // Immediately select the hold action when another key is pressed.
+            return true;
+        default:
+            // Do not select the hold action when another key is pressed.
             return false;
     }
 }
@@ -359,10 +376,10 @@ void matrix_scan_user(void) {
         leading = false;
         leader_end();
         // R section
-        SEQ_THREE_KEYS(KC_R, KC_F, KC_N) {
-            // negate function
-            SEND_STRING("`%!in%` <- Negate(`%in%`)");
-        }
+        // SEQ_THREE_KEYS(KC_R, KC_F, KC_N) {
+        //     // negate function
+        //     SEND_STRING("`%!in%` <- Negate(`%in%`)");
+        // }
         SEQ_TWO_KEYS(KC_R, KC_SCLN) {
             // needs to a as semi colon is a tap dance key
             // need to use bscp as first enters semi colon
@@ -374,9 +391,9 @@ void matrix_scan_user(void) {
         SEQ_TWO_KEYS(KC_R, KC_I) {
             SEND_STRING(" %in% ");
         }
-        SEQ_TWO_KEYS(KC_R, KC_N) {
-            SEND_STRING(" %!in% ");
-        }
+        // SEQ_TWO_KEYS(KC_R, KC_N) {
+        //     SEND_STRING(" %!in% ");
+        // }
         // Signature section
         SEQ_TWO_KEYS(KC_S, KC_S) {
             SEND_STRING("Cheers,  :-)" SS_TAP(X_ENT) SS_TAP(X_ENT) "Atanas");
