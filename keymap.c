@@ -327,7 +327,7 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 }
 
 // =============================================================================
-// MOD TAP INTERRUP PER KEY SECTION
+// HOLD ON OTHER KEY SECTION
 // =============================================================================
 // NOTE this is experimental, review it's use
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
