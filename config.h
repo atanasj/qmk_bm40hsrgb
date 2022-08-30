@@ -1,4 +1,24 @@
+
 #pragma once
+
+#ifdef AUDIO_ENABLE
+#    define STARTUP_SONG SONG(PLANCK_SOUND)
+#    include "song_list.h"
+// #        define DM1_SONG SONG(RICK_ROLL)
+// #        define DM2_SONG SONG(SONIC_RING)
+// #        define UNICODE_SONG_MAC  SONG(MARIO_THEME)
+// #        define UNICODE_SONG_LNX  SONG(MARIO_POWERUP)
+// #        define UNICODE_SONG_WIN  SONG(MARIO_ONEUP)
+// #        define UNICODE_SONG_BSD  SONG(RICK_ROLL)
+// #        define UNICODE_SONG_WINC SONG(RICK_ROLL)
+// #    define STARTUP_SONG SONG(NO_SOUND)
+//////////////////////////////////////////////////////////
+// #define DEFAULT_LAYER_SONGS { SONG(QWERTY_SOUND), \  //
+//                               SONG(COLEMAK_SOUND), \ //
+//                               SONG(DVORAK_SOUND) \   //
+//                             }                        //
+//////////////////////////////////////////////////////////
+#endif
 
 #undef TAPPING_TERM
 #define TAPPING_TERM 175
@@ -20,15 +40,16 @@
 
 #define MACRO_TIMER 5
 
-// Limits the max. amount of layers to 16 to save firmware memory.
-#define LAYER_STATE_16BIT
+// Limits the max. amount of layers to 8 to save firmware memory.
+/* #define LAYER_STATE_8BIT */
 
 // #define MIDI_ADVANCED
 /* override number of MIDI tone keycodes (each octave adds 12 keycodes and allocates 12 bytes) */
 /* #define MIDI_TONE_KEYCODE_OCTAVES 2 */
 
-#define COMBO_VARIABLE_LEN
-/* #define COMBO_COUNT 13 */
+// #define COMBO_VARIABLE_LEN
+// #define COMBO_COUNT 10
+#undef COMBO_COUNT
 #undef COMBO_TERM
 #define COMBO_TERM 20
 // Set the mouse settings to a comfortable speed/accuracy trade-off
@@ -48,78 +69,19 @@
 #define MK_3_SPEED
 #define MK_MOMENTARY_ACCEL
 
-
-#define RGBLIGHT_LAYERS
-#define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF
-#define RGBLIGHT_ANIMATIONS
-
-//#define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
-#undef RGBLIGHT_LIMIT_VAL
-#define RGBLIGHT_LIMIT_VAL 50
-
-//bootmagic
-#define BOOTMAGIC_KEY_SALT KC_V
-#define BOOTMAGIC_KEY_EEPROM_CLEAR KC_Q
-#define BOOTMAGIC_LITE_ROW 0
-#define BOOTMAGIC_LITE_COLUMN 1
-
-// NOTE space saving
-#undef LOCKING_SUPPORT_ENABLE
-#undef LOCKING_RESYNC_ENABLE
-
-#ifdef RGB_MATRIX_ENABLE
-
-
-//--------------------------------------------------------------------------------------------------------
-
-//disable animations to save space
-#undef ENABLE_RGB_MATRIX_ALPHAS_MODS
-#undef ENABLE_RGB_MATRIX_GRADIENT_UP_DOWN
-#undef ENABLE_RGB_MATRIX_GRADIENT_LEFT_RIGHT
-#undef ENABLE_RGB_MATRIX_BREATHING
-#undef ENABLE_RGB_MATRIX_BAND_SAT
-#undef ENABLE_RGB_MATRIX_BAND_VAL
-// #undef ENABLE_RGB_MATRIX_BAND_PINWHEEL_SAT
-// #undef ENABLE_RGB_MATRIX_BAND_PINWHEEL_VAL
-// #undef ENABLE_RGB_MATRIX_BAND_SPIRAL_SAT
-// #undef ENABLE_RGB_MATRIX_BAND_SPIRAL_VAL
-// #undef ENABLE_RGB_MATRIX_CYCLE_ALL
-// #undef ENABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT
-// #undef ENABLE_RGB_MATRIX_CYCLE_UP_DOWN
-// #undef ENABLE_RGB_MATRIX_RAINBOW_MOVING_CHEVRON
-#undef ENABLE_RGB_MATRIX_CYCLE_OUT_IN
-#undef ENABLE_RGB_MATRIX_CYCLE_OUT_IN_DUAL
-#undef ENABLE_RGB_MATRIX_CYCLE_PINWHEEL
-#undef ENABLE_RGB_MATRIX_CYCLE_SPIRAL
-#undef ENABLE_RGB_MATRIX_DUAL_BEACON
-#undef ENABLE_RGB_MATRIX_RAINBOW_BEACON
-#undef ENABLE_RGB_MATRIX_RAINBOW_PINWHEELS
-// #undef ENABLE_RGB_MATRIX_RAINDROPS
-// #undef ENABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS
-#undef ENABLE_RGB_MATRIX_HUE_BREATHING
-#undef ENABLE_RGB_MATRIX_HUE_PENDULUM
-#undef ENABLE_RGB_MATRIX_HUE_WAVE
-#undef ENABLE_RGB_MATRIX_PIXEL_FRACTAL
-#undef ENABLE_RGB_MATRIX_PIXEL_RAIN
-
-#undef ENABLE_RGB_MATRIX_TYPING_HEATMAP
-#undef ENABLE_RGB_MATRIX_DIGITAL_RAIN
-
-#undef ENABLE_RGB_MATRIX_SOLID_REACTIVE_SIMPLE
-#undef ENABLE_RGB_MATRIX_SOLID_REACTIVE
-#undef ENABLE_RGB_MATRIX_SOLID_REACTIVE_WIDE
-#undef ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTIWIDE
-#undef ENABLE_RGB_MATRIX_SOLID_REACTIVE_CROSS
-#undef ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTICROSS
-#undef ENABLE_RGB_MATRIX_SOLID_REACTIVE_NEXUS
-#undef ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS
-#undef ENABLE_RGB_MATRIX_SPLASH
-#undef ENABLE_RGB_MATRIX_MULTISPLASH
-#undef ENABLE_RGB_MATRIX_SOLID_SPLASH
-#undef ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
-
-#undef RGB_MATRIX_STARTUP_MODE
-
-#define RGBLIGHT_HUE_STEP 20
-
-#endif
+#ifdef RGBLIGHT_ENABLE
+#    define RGBLIGHT_LAYER_BLINK
+#    define RGBLIGHT_LAYERS
+// #    define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF
+#    define RGBLIGHT_SLEEP
+#    if defined(__AVR__) && !defined(__AVR_AT90USB1286__)
+#        undef RGBLIGHT_ANIMATIONS
+#        define RGBLIGHT_EFFECT_BREATHING
+#        define RGBLIGHT_EFFECT_SNAKE
+#        define RGBLIGHT_EFFECT_KNIGHT
+#    else
+#        define RGBLIGHT_ANIMATIONS
+// #define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
+// #        define RGBLIGHT_LIMIT_VAL 10
+#    endif
+#endif  // RGBLIGHT_ENABLE

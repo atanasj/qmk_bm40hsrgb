@@ -9,11 +9,6 @@
 
 uint8_t mod_state;
 uint8_t oneshot_mod_state;
-uint16_t last_keycode;
-
-bool caps_word_on;
-void caps_word_enable(void);
-void caps_word_disable(void);
 
 enum planck_layers {
   _BL,
@@ -24,8 +19,8 @@ enum planck_layers {
   _WQ,
   _DM,
   _MS,
-  _LOWER,
   _FN,
+  _LOWER,
   _MD
 };
 
@@ -37,8 +32,6 @@ enum macros {
     SUSPEND = SAFE_RANGE,
     GUI_TAB,
     SGUI_TAB,
-    CAPS_WORD,
-    REPEAT,
     KC_SECRET_1,
     KC_SECRET_2,
     KC_SECRET_3,
@@ -49,6 +42,13 @@ enum macros {
 // =============================================================================
 // KEY DEF SECTION
 // =============================================================================
+
+#define LG_Q LGUI_T(KC_Q)
+#define LC_A LCTL_T(KC_A)
+#define LS_Z LSFT_T(KC_Z)
+#define RG_P RGUI_T(KC_P)
+#define RC_QUOT RCTL_T(KC_QUOT)
+#define RS_SLSH RSFT_T(KC_SLSH)
 
 #define LOWER  LT(_LOWER, KC_LSFT)
 #define NUMPAD LT(_NL, KC_SPC)

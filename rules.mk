@@ -6,10 +6,10 @@ COMMAND_ENABLE = no
 GRAVE_ESC_ENABLE = no
 MAGIC_ENABLE = no
 BOOTMAGIC_ENABLE = yes
-# keep path to combos local to my keymap
 
-VPATH  +=  keyboards/kprepublic/bm40hsrgb/keymaps/atanasj/combos/
+VPATH  += keyboards/kprepublic/bm40hsrgb/keymaps/atanasj/combos/
 
+RGB_MATRIX_ENABLE = no
 COMBO_ENABLE = yes
 MOUSEKEY_ENABLE = yes
 TAP_DANCE_ENABLE = yes
@@ -18,3 +18,4 @@ EXTRAKEY_ENABLE = yes # Audio control and System control
 UNICODEMAP_ENABLE = no
 MIDI_ENABLE = no
 DYNAMIC_MACRO_ENABLE = yes
+CAPS_WORD_ENABLE = yes
