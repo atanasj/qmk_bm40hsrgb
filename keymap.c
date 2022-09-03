@@ -34,10 +34,10 @@ bool process_record_secrets(uint16_t keycode, keyrecord_t *record) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_BL] = LAYOUT_planck_mit(
-    LG_Q,  WIND_W, L_MS_E, KC_R,   KC_T,   KC_TAB, KC_BSPC, KC_Y,    KC_U,    KC_I,    KC_O,   RG_P,
-    LC_A,  KC_S,   L_VI_D, KC_F,   KC_G,   KC_ESC, KC_ENT,  KC_H,    KC_J,    KC_K,    KC_L,   RC_QUOT,
-    LS_Z,  KC_X,   KC_C,   KC_V,   KC_B,   KC_NO,  KC_NO,   KC_N,    KC_M,    KC_COMM, KC_DOT, RS_SLSH,
-    KC_NO, KC_NO,  KC_NO,  OS_LAG, NUMPAD, KC_NO,           T_A_SPC, FN_LAY,  KC_NO,   KC_NO,  KC_NO
+    LG_Q,  WIND_W, L_MS_E, KC_R,    KC_T,   KC_TAB, KC_BSPC, KC_Y,    KC_U,    KC_I,    KC_O,   RG_P,
+    LC_A,  KC_S,   L_VI_D, KC_F,    KC_G,   KC_ESC, KC_ENT,  KC_H,    KC_J,    KC_K,    KC_L,   RC_QUOT,
+    LS_Z,  KC_X,   KC_C,   KC_V,    KC_B,   KC_NO,  KC_NO,   KC_N,    KC_M,    KC_COMM, KC_DOT, RS_SLSH,
+    KC_NO, KC_NO,  KC_NO,  LAG_ESC, NUMPAD, KC_NO,           T_A_SPC, FN_LAY,  KC_NO,   KC_NO,  KC_NO
 ),
 [_NL] = LAYOUT_planck_mit(
     XXXXXXX, XXXXXXX, _______,  XXXXXXX, _______, XXXXXXX, XXXXXXX, _______, KC_7,    KC_8,    KC_9,    KC_EQL,
