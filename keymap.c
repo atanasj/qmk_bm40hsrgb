@@ -299,6 +299,14 @@ void matrix_scan_user(void) {
     }
 }
 
+
+// Alt + esc = Alt + spc
+// const key_override_t num_esc_override = ko_make_basic(MOD_MASK_ALT, KC_ESC, A(KC_SPC));
+
+// const key_override_t **key_overrides = (const key_override_t *[]){
+//     &num_esc_override,
+//     NULL
+// };
 // =============================================================================
 // END KEYMAP.C
 // =============================================================================

@@ -47,7 +47,7 @@ enum macros {
 #define LC_A LCTL_T(KC_A)
 #define LS_Z LSFT_T(KC_Z)
 #define RG_P RGUI_T(KC_P)
-#define RC_QUOT RCTL_T(KC_QUOT)
+#define RC_QUOT LCTL_T(KC_QUOT)
 #define RS_SLSH RSFT_T(KC_SLSH)
 #define LAG_ESC  LAG_T(KC_ESC)
 
