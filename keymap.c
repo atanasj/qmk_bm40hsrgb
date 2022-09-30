@@ -34,52 +34,52 @@ bool process_record_secrets(uint16_t keycode, keyrecord_t *record) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_BL] = LAYOUT_planck_mit(
-    LG_Q,  WIND_W, L_MS_E, KC_R,    KC_T,   KC_TAB, KC_BSPC, KC_Y,    KC_U,    KC_I,    KC_O,   RG_P,
-    LC_A,  KC_S,   L_VI_D, KC_F,    KC_G,   KC_ESC, KC_ENT,  KC_H,    KC_J,    KC_K,    KC_L,   RC_QUOT,
-    LS_Z,  KC_X,   KC_C,   KC_V,    KC_B,   KC_NO,  KC_NO,   KC_N,    KC_M,    KC_COMM, KC_DOT, RS_SLSH,
-    KC_NO, KC_NO,  KC_NO,  LAG_ESC, NUMPAD, KC_NO,           T_A_SPC, FN_LAY,  KC_NO,   KC_NO,  KC_NO
+    LG_Q,    WIND_W,  L_MS_E,  KC_R,    KC_T,   XXXXXXX,           XXXXXXX, KC_Y,    KC_U,    KC_I,    KC_O,    RG_P,
+    LC_A,    KC_S,    L_VI_D,  KC_F,    KC_G,   XXXXXXX,           XXXXXXX, KC_H,    KC_J,    KC_K,    KC_L,    RC_QUOT,
+    LS_Z,    KC_X,    KC_C,    KC_V,    KC_B,   XXXXXXX,           XXXXXXX, KC_N,    KC_M,    KC_COMM, KC_DOT,  RS_SLSH,
+    XXXXXXX, XXXXXXX, XXXXXXX, LAG_ESC, NUMPAD, XXXXXXX,                    T_A_SPC, FN_LAY,  XXXXXXX, XXXXXXX, XXXXXXX
 ),
 [_NL] = LAYOUT_planck_mit(
-    XXXXXXX, XXXXXXX, _______,  XXXXXXX, _______, XXXXXXX, XXXXXXX, _______, KC_7,    KC_8,    KC_9,    KC_EQL,
-    KC_LGUI, KC_LALT, _______,  T_SHDOT, _______, XXXXXXX, XXXXXXX, _______, KC_4,    KC_5,    KC_6,    KC_MINS,
-    XXXXXXX, T_NUMB,  XXXXXXX,  XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    KC_PSLS,
-    XXXXXXX, _______, _______,  _______, _______, _______,          KC_0, _______,  _______, XXXXXXX, XXXXXXX
+    XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, KC_7,    KC_8,    KC_9,    KC_EQL,
+    KC_LGUI, KC_LALT, _______,  T_SHDOT, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, KC_4,    KC_5,    KC_6,    KC_MINS,
+    XXXXXXX, T_NUMB,  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX, XXXXXXX, KC_1,    KC_2,    KC_3,    KC_PSLS,
+    XXXXXXX, XXXXXXX, XXXXXXX,  _______, _______, XXXXXXX,                  KC_0,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
  ),
 [_VI] = LAYOUT_planck_mit(
-    _______, _______, _______, _______, _______, _______, T_SNAK,  KC_HOME, KC_PGDN,  KC_PGUP, KC_END,   XXXXXXX,
-    KC_LCMD, KC_LALT, _______, KC_LSFT, KC_LEAD, _______, _______, KC_LEFT, KC_DOWN,  KC_UP,   KC_RIGHT, KC_F19,
-    _______, T_VIL,   _______, _______, _______, _______, _______, DW_BKWD, KC_BSPC,  KC_DEL,  DW_FRWD,  TD_DEL,
-    _______, _______, _______, _______, _______, _______, _______,          _______,  _______, _______,  _______
+    _______, _______, _______, _______, _______, XXXXXXX,          XXXXXXX, KC_HOME, KC_PGDN,  KC_PGUP, KC_END,   T_SNAK,
+    KC_LCMD, KC_LALT, _______, KC_LSFT, KC_LCTL, XXXXXXX,          XXXXXXX, KC_LEFT, KC_DOWN,  KC_UP,   KC_RIGHT, KC_F19,
+    _______, T_VIL,   _______, KC_LEAD, _______, XXXXXXX,          XXXXXXX, DW_BKWD, KC_BSPC,  KC_DEL,  DW_FRWD,  TD_DEL,
+    XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, XXXXXXX,                   _______, _______,  XXXXXXX, XXXXXXX,  XXXXXXX
 ),
 [_WL] = LAYOUT_planck_mit(
-    MO(_WQ), _______, XXXXXXX, MO(_DM), _______, XXXXXXX, XXXXXXX, XXXXXXX,      XXXXXXX,    XXXXXXX,    KC_BTN5,    XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, _______, HYPR(KC_H),   HYPR(KC_J), HYPR(KC_K), HYPR(KC_L), XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX, HYPR(KC_I),   XXXXXXX,    _______,    _______,    XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,          XXXXXXX, HYPR(KC_ENT), _______,    XXXXXXX,    XXXXXXX,    _______
+    MO(_WQ), _______, XXXXXXX, MO(_DM), _______, XXXXXXX,          XXXXXXX, XXXXXXX,      XXXXXXX,    XXXXXXX,    KC_BTN5,    XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,          XXXXXXX, HYPR(KC_H),   HYPR(KC_J), HYPR(KC_K), HYPR(KC_L), XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,          XXXXXXX, HYPR(KC_I),   XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,                   XXXXXXX, HYPR(KC_ENT), XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX
  ),
 [_WQ] = LAYOUT_planck_mit(
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX,      XXXXXXX, XXXXXXX,  KC_BTN7,   XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, G(S(KC_GRV)), GUI_TAB, SGUI_TAB, G(KC_GRV), XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX,      XXXXXXX, _______,  _______,   XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          _______,      _______,  XXXXXXX,   XXXXXXX, _______
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX,      XXXXXXX, XXXXXXX,  KC_BTN7,   XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, G(S(KC_GRV)), GUI_TAB, SGUI_TAB, G(KC_GRV), XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX,      XXXXXXX, XXXXXXX,  XXXXXXX,   XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   _______,      _______, XXXXXXX,  XXXXXXX,   XXXXXXX
  ),
 [_DM] = LAYOUT_planck_mit(
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, DM_REC1, DM_PLY1, DM_REC2, DM_PLY2, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,          DM_RSTP, _______, XXXXXXX, XXXXXXX, _______
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, DM_REC1, DM_PLY1, DM_REC2, DM_PLY2, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   DM_RSTP, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
  ),
 [_MS] = LAYOUT_planck_mit(
-    KC_ACL1, KC_ACL2, _______, KC_R,    XXXXXXX, KC_ACL0, XXXXXXX, KC_WH_L, KC_WH_U,    KC_WH_D, KC_WH_R, XXXXXXX,
-    MS_GUIA, MS_ALTS, _______, MS_SFTF, XXXXXXX, _______, _______, KC_MS_L, KC_MS_D,    KC_MS_U, KC_MS_R, XXXXXXX,
-    XXXXXXX, T_MSL,   XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX, C(G(KC_D)), KC_BTN3, KC_BTN2, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,          KC_BTN1,    _______, XXXXXXX, XXXXXXX, _______
+    KC_ACL1, KC_ACL2, _______, KC_R,    XXXXXXX, KC_ACL0,          XXXXXXX, KC_WH_L, KC_WH_U,    KC_WH_D, KC_WH_R, XXXXXXX,
+    MS_GUIA, MS_ALTS, _______, MS_SFTF, XXXXXXX, XXXXXXX,          XXXXXXX, KC_MS_L, KC_MS_D,    KC_MS_U, KC_MS_R, XXXXXXX,
+    XXXXXXX, T_MSL,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, C(G(KC_D)), KC_BTN3, KC_BTN2, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   KC_BTN1, _______,    XXXXXXX, XXXXXXX, XXXXXXX
  ),
 [_FN] = LAYOUT_planck_mit(
-    KC_TILD, KC_LCBR, KC_RCBR, KC_PIPE, SUSPEND, XXXXXXX, XXXXXXX, QK_BOOT, XXXXXXX, XXXXXXX, DEBUG,   XXXXXXX,
-    KC_GRV,  KC_LBRC, KC_RBRC, KC_BSLS, KC_BRIU, XXXXXXX, XXXXXXX, _______, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
-    KC_SCLN, KC_LPRN, KC_RPRN, KC_COLN, KC_BRID, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LSFT,
-    _______, _______, _______, _______, _______, _______,          _______, _______, _______, _______, _______
+    KC_TILD, KC_LCBR, KC_RCBR, KC_PIPE, SUSPEND, XXXXXXX,          XXXXXXX, QK_BOOT, XXXXXXX, XXXXXXX, DEBUG,   XXXXXXX,
+    KC_GRV,  KC_LBRC, KC_RBRC, KC_BSLS, KC_BRIU, XXXXXXX,          XXXXXXX, XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
+    KC_SCLN, KC_LPRN, KC_RPRN, KC_COLN, KC_BRID, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, XXXXXXX,                   _______, _______, XXXXXXX, XXXXXXX, XXXXXXX
 ),
 };
 
@@ -149,21 +149,16 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     case L_VI_D:
     case WIND_W:
     case NUMPAD:
+        return 225;
     case LG_Q:
     case LS_Z:
     case RG_P:
     case RC_QUOT:
     case RS_SLSH:
-        return 225;
-    case SL_HLP:
+    case LC_A:
         return 150;
-        // return 115;
-    case SEMI_:
-        return 155;
     case FN_LAY:
         return 35;
-    case LC_A:
-        return TAPPING_TERM+500;
     default:
         return TAPPING_TERM;
     }
@@ -201,7 +196,7 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
         case WIND_W:
         case NUMPAD:
         case LG_Q:
-        // case LC_A:
+        case LC_A:
         case LS_Z:
         case RG_P:
         case RC_QUOT:
@@ -260,16 +255,17 @@ void matrix_scan_user(void) {
         leading = false;
         leader_end();
         // R section
-        SEQ_TWO_KEYS(KC_R, KC_SCLN) {
-            // needs to a as semi colon is a tap dance key
-            // need to use bscp as first enters semi colon
+        SEQ_TWO_KEYS(KC_R, KC_QUOT) {
             SEND_STRING(" <-");
+        }
+        SEQ_TWO_KEYS(KC_R, KC_DOT) {
+            SEND_STRING(" |>");
         }
         SEQ_TWO_KEYS(KC_R, KC_P) {
             SEND_STRING(" %>%");
         }
         SEQ_TWO_KEYS(KC_R, KC_I) {
-            SEND_STRING(" %in% ");
+            SEND_STRING(" %in%");
         }
         // Signature section
         // signature, smile
