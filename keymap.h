@@ -31,7 +31,7 @@ enum planck_layers {
 enum macros {
     SUSPEND = SAFE_RANGE,
     GUI_TAB,
-    SGUI_TAB,
+    SG_TAB,
     KC_SECRET_1,
     KC_SECRET_2,
     KC_SECRET_3,
@@ -42,6 +42,20 @@ enum macros {
 // =============================================================================
 // KEY DEF SECTION
 // =============================================================================
+
+#define GS_GRV G(S(KC_GRV))
+#define GUI_GRV G(KC_GRV)
+#define CG_D C(G(KC_D))
+
+#define MO_WQ MO(_WQ)
+#define MO_DM MO(_DM)
+
+#define HYP_H HYPR(KC_H)
+#define HYP_I HYPR(KC_I)
+#define HYP_J HYPR(KC_J)
+#define HYP_K HYPR(KC_K)
+#define HYP_L HYPR(KC_L)
+#define HYP_ENT HYPR(KC_ENT)
 
 #define LG_Q LGUI_T(KC_Q)
 #define LC_A LCTL_T(KC_A)
