@@ -1,5 +1,7 @@
 // base layer
 COMB(BSPCjl,     KC_BSPC,         KC_J, KC_L)
+// COMB(TABjk,      KC_TAB,          KC_J, L_FN_K)
+// COMB(ENTkl,      KC_ENT,          L_FN_K, KC_L)
 COMB(TABjk,      KC_TAB,          KC_J, KC_K)
 COMB(ENTkl,      KC_ENT,          KC_K, KC_L)
 // COMB(ESCio,      KC_ESC,          KC_I, KC_O)
