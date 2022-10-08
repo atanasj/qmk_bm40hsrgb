@@ -50,7 +50,7 @@ enum macros {
 #define RG_P RGUI_T(KC_P)
 #define RC_QUOT LCTL_T(KC_QUOT)
 #define RS_SLSH RSFT_T(KC_SLSH)
-#define LAG_ESC  LAG_T(KC_ESC)
+#define LAG_ESC  LAG_T(KC_SPC)
 
 // Mouse and window layers
 #define MO_WQ MO(_WQ)
@@ -69,7 +69,7 @@ enum macros {
 
 // layer taps
 #define LOWER  LT(_LOWER, KC_LSFT)
-#define NUMPAD LT(_NL, KC_SPC)
+#define NUMPAD LT(_NL, KC_ESC)
 #define FN_LAY MO(_FN)
 #define L_FN_K LT(_FN, KC_K)
 #define L_VI_D LT(_VI, KC_D)
