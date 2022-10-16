@@ -43,8 +43,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  ),
 [_VI] = LAYOUT_planck_mit(
     _______, _______, _______, _______, _______, XXXXXXX,     XXXXXXX, KC_HOME, KC_PGDN, KC_PGUP, KC_END,   T_SNAK,
-    KC_LCMD, KC_LALT, _______, KC_LSFT, KC_LCTL, XXXXXXX,     XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, KC_F19,
-    _______, T_VIL,   _______, KC_LEAD, _______, XXXXXXX,     XXXXXXX, DW_BKWD, KC_BSPC, KC_DEL,  DW_FRWD,  TD_DEL,
+    KC_LCMD, KC_LALT, _______, KC_LSFT, KC_LEAD, XXXXXXX,     XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, KC_F19,
+    _______, T_VIL,   _______, KC_LCTL, _______, XXXXXXX,     XXXXXXX, DW_BKWD, KC_BSPC, KC_DEL,  DW_FRWD,  TD_DEL,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,              _______, _______, XXXXXXX, XXXXXXX,  XXXXXXX
 ),
 [_WL] = LAYOUT_planck_mit(
