@@ -116,19 +116,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
         case SUSPEND:
             if (record->event.pressed) {
-                // if (is_led_on) {
-                //     is_led_on = false;
-                //     rgblight_disable();
+                #if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
+                if (is_led_on) {
+                    is_led_on = false;
+                    rgblight_disable();
                     SEND_STRING(SS_LCTL(SS_LGUI("q")) SS_DELAY(999) SS_TAP(X_ESC));
-                // }
+                }
+                #else
+                    SEND_STRING(SS_LCTL(SS_LGUI("q")) SS_DELAY(999) SS_TAP(X_ESC));
+                #endif
             }
             return true;
         default:
             if (record->event.pressed) {
-                // if (!is_led_on) {
-                //     is_led_on = true;
-                //     rgblight_enable();
-                // }
+                #if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
+                if (!is_led_on) {
+                    is_led_on = true;
+                    rgblight_enable();
+                }
+                #endif
             }
     }
     // return true;
