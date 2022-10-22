@@ -1,4 +1,4 @@
-// Copyright 2021 Atanas Janackovski (@atanasj)
+// Copyright 2022 Atanas Janackovski (@atanasj)
 
 #include QMK_KEYBOARD_H
 #include "muse.h"
@@ -291,7 +291,7 @@ void matrix_scan_user(void) {
         }
         // Signature section
         // signature, smile
-        SEQ_TWO_KEYS(KC_S, KC_S) {
+        SEQ_TWO_KEYS(KC_A, KC_S) {
             SEND_STRING("Cheers,  :-)" SS_TAP(X_ENT) SS_TAP(X_ENT) "Atanas");
         }
         // signature, no smile
