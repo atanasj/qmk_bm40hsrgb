@@ -77,7 +77,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TILD, KC_LBRC, KC_RBRC, KC_GRV,  KC_BRID, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,              XXXXXXX, _______, XXXXXXX, XXXXXXX,  XXXXXXX
 ),
+[_SC] = LAYOUT_planck_mit(
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, SECRET4, SECRET5, XXXXXXX,  XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, SECRET1, SECRET2, SECRET3,  XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,              XXXXXXX, _______, XXXXXXX, XXXXXXX,  XXXXXXX
+),
 };
+
+
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+  return update_tri_layer_state(state, _NL, _WL, _SC);
+}
 
 // =============================================================================
 // MACRO DEFS

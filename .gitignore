@@ -1,2 +1,3 @@
-# ignore lsp cache dir
 .ccls-cache/*
+secrets.h
+# secrets.c

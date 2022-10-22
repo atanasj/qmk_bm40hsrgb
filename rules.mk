@@ -1,8 +1,16 @@
 SRC += muse.c
 
-LTO_ENABLE = yes				# reduces files size dramatically
-CONSOLE_ENABLE = no
+ifneq ($(strip $(NO_SECRETS)), yes)
+    # NOTE needs to be in users for below line to work
+    # ifneq ("$(wildcard $(USER_PATH)/secrets.c)","")
+    ifneq ("$(wildcard keyboards/planck/keymaps/atanasj/secrets.c)","")
+        SRC += secrets.c
+    endif
+endif
+
 COMMAND_ENABLE = no
+CONSOLE_ENABLE = no
+LTO_ENABLE = yes				# reduces files size dramatically
 GRAVE_ESC_ENABLE = no
 MAGIC_ENABLE = no
 BOOTMAGIC_ENABLE = yes
