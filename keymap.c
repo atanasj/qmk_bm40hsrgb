@@ -159,10 +159,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+    case WIND_W:
     case L_MS_E:
+    case LC_A:
     case L_VI_D:
     case L_FN_K:
-    case WIND_W:
     case NUMPAD:
         return 225;
     case LG_Q:
@@ -170,7 +171,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     case RG_P:
     case RC_QUOT:
     case RS_SLSH:
-    case LC_A:
         return 150;
     case FN_LAY:
         return 35;
@@ -244,7 +244,7 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 // MOD TAP INTERRUP PER KEY SECTION
 // =============================================================================
 
-// but all keys that are problematic with rolling keystrokes here
+// put all keys that are problematic with rolling keystrokes here
 bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LG_Q:
