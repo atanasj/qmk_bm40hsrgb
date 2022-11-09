@@ -33,7 +33,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LG_Q,    WIND_W,  L_MS_E,  KC_R,    KC_T,    XXXXXXX,     XXXXXXX, KC_Y,    KC_U,    KC_I,    KC_O,     RG_P,
     LC_A,    KC_S,    L_VI_D,  KC_F,    KC_G,    XXXXXXX,     XXXXXXX, KC_H,    KC_J,    L_FN_K,  KC_L,     RC_QUOT,
     LS_Z,    KC_X,    KC_C,    KC_V,    KC_B,    XXXXXXX,     XXXXXXX, KC_N,    KC_M,    KC_COMM, KC_DOT,   RS_SLSH,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, NUMPAD,  XXXXXXX,              T_A_SPC, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, NUMB,    XXXXXXX,              T_A_SPC, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX
 ),
 [_NL] = LAYOUT_planck_mit(
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, KC_7,    KC_8,    KC_9,     KC_EQL,
@@ -72,13 +72,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,              KC_BTN1, _______, XXXXXXX, XXXXXXX,  XXXXXXX
  ),
 [_FN] = LAYOUT_planck_mit(
-    KC_PIPE, KC_LCBR, KC_RCBR, KC_BSLS, SUSPEND, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,
-    KC_COLN, KC_LPRN, KC_RPRN, KC_SCLN, KC_BRIU, XXXXXXX,     XXXXXXX, KC_LSFT, KC_LCTL, _______, KC_LALT,  KC_LGUI,
+    KC_PIPE, KC_LCBR, KC_RCBR, KC_BSLS, KC_BRIU, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,
+    KC_COLN, KC_LPRN, KC_RPRN, KC_SCLN, KC_ESC,  XXXXXXX,     XXXXXXX, KC_LSFT, KC_LCTL, _______, KC_LALT,  KC_LGUI,
     KC_TILD, KC_LBRC, KC_RBRC, KC_GRV,  KC_BRID, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,              XXXXXXX, _______, XXXXXXX, XXXXXXX,  XXXXXXX
 ),
 [_SC] = LAYOUT_planck_mit(
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,
+    SUSPEND, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, DEBUG,   SECRET4, SECRET5, XXXXXXX,  XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, SECRET1, SECRET2, SECRET3,  SL_HELP,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX,              XXXXXXX, _______, XXXXXXX, XXXXXXX,  XXXXXXX
@@ -96,6 +96,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 // =============================================================================
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    static uint16_t fnx_layer_timer;
     mod_state = get_mods();
     oneshot_mod_state = get_oneshot_mods();
     switch (keycode) {
@@ -126,6 +127,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case KC_RSFT:
             perform_space_cadet(record, KC_RSPC, KC_RSFT, KC_RSFT, KC_0);
             return false;
+        case NUMB:
+            if(record->event.pressed){
+                fnx_layer_timer = timer_read();
+                layer_on(_NL);
+            } else {
+                layer_off(_NL);
+                if (timer_elapsed(fnx_layer_timer) < 100) {
+                    set_oneshot_mods(MOD_LSFT);
+                }
+            }
+        return false;
         case SUSPEND:
             if (record->event.pressed) {
                 #if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
