@@ -4,6 +4,11 @@ COMB(TABjk,      KC_TAB,          KC_J, L_FN_K)
 COMB(ENTkl,      KC_ENT,          L_FN_K, KC_L)
 COMB(CAPSqw,     CAPS_WORD,       LG_Q, WIND_W)
 
+// ms-layer
+COMB(BSPCjl_ms,  KC_BSPC,         KC_MS_D, KC_MS_R)
+COMB(TABjk_ms,   KC_TAB,          KC_MS_D, KC_MS_U)
+COMB(ENTkl_ms,   KC_ENT,          KC_MS_U, KC_MS_R)
+
 // vi-layer
 COMB(BSPCdl,     KC_BSPC,         KC_DOWN, KC_RIGHT)
 COMB(TABrd,      KC_TAB,          KC_DOWN, KC_UP)
